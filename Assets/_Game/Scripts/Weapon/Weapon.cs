@@ -32,12 +32,12 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("bot") )//|| other.gameObject.CompareTag("player"))
+        if (other.gameObject.CompareTag("bot") || other.gameObject.CompareTag("player"))
         {
             Character character = other.gameObject.GetComponent<Character>();
             if(character != this.character)
             {
-                //weaponPool.ReturnToPool(this.gameObject);
+                weaponPool.ReturnToPool(this.gameObject);
             }
         }
     }
