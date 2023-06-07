@@ -6,8 +6,9 @@ public class Player : Character
 {
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Rigidbody rb;
+    public GameObject prefabWeapon;
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class Player : Character
         base.OnInit();
         StopMoving();
         characterAnim.ChangeAnim("idle");
+        GetWeaponHand();
         skinnedMeshRenderer.material = whiteMaterial;
         isMoving = false;
     }
@@ -59,9 +61,15 @@ public class Player : Character
         characterAnim.ChangeAnim("dance");
     }
 
-    public void GetWeapon()
+    public void GetWeaponHand()
     {
-        
+        GameObject wp = Instantiate(prefabWeapon);
+        onHandWeapon = wp;
+        ShowOnHandWeapon();
+        onHandWeapon.transform.SetParent(rightHand.transform);
+        onHandWeapon.transform.localPosition = Vector3.zero;
+        onHandWeapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        onHandWeapon.GetComponent<BoxCollider>().enabled = false;
     }
     public void OnTriggerEnter(Collider other)
     {

@@ -53,6 +53,7 @@ public class PlayerAttack : MonoBehaviour
         {
             RotateToTarget();
             StartCoroutine(Attack());
+            StartCoroutine(DelayAttack(2f));
         }
 
         if (character.enemyList.Count > 0)
@@ -100,24 +101,54 @@ public class PlayerAttack : MonoBehaviour
         if (enemy != null)
         {
             Vector3 enemyPos = enemy.transform.position;
+            
             characterAnimation.ChangeAnim("attack");
-          
+            float elapsedTime = 0f;
+            float duration = 0.4f;
+            while (elapsedTime < duration)
+            {
+                
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            character.HideOnHandWeapon();
             GameObject obj = character.weaponPool.GetObject(); // lay weapon tu` pool
-            obj.transform.position = rightHand.transform.position; // dat weapon vao tay phai character
-            targetWeapon.position = enemyPos;
+            obj.transform.position = rightHand.transform.position; // dat weapon vao tay character
+            Vector3 dir = enemyPos - obj.transform.position;
+            dir.y = 0;
+            dir = dir.normalized;
+            targetWeapon.position = obj.transform.position + dir * attackRange;
             StartCoroutine(FlyWeaponToTarget(obj, targetWeapon.position, 10f));
         }
         yield return null;
     }
 
-    
+    public IEnumerator DelayAttack(float delayTime)
+    {
+        canAttack = false;
+        float elapsedTime = 0f;
+        float duration = delayTime;
+        while (elapsedTime < duration)
+        {           
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        canAttack = true;
+        if (!character.isDead)
+        {
+            characterAnimation.ChangeAnim("idle");
+        }
+        character.ShowOnHandWeapon();
+    }
+
+
     public IEnumerator FlyWeaponToTarget(GameObject obj, Vector3 target, float speed)
     {
         while (Vector3.Distance(obj.transform.position, target) > 0.1f && obj.activeSelf)
         {
             obj.transform.position = Vector3.MoveTowards(obj.transform.position, target, speed * Time.deltaTime);
             
-            //obj.transform.Rotate(0, 0, -speed);
+            obj.transform.Rotate(0, 0, -speed);
            
             yield return null;
         }

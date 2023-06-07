@@ -8,12 +8,13 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private GameObject joystickBackground;
     [SerializeField] private GameObject joystickHandle;
     [SerializeField] private CharacterAnimation characterAnimation;
+    [SerializeField] private Player player;
 
     private Vector3 firstMousePosition;
     private Vector3 currentMousePosition;
     private Vector3 direction;
     private float joystickRadius = 120f;
-
+    
     public Rigidbody rb;
 
     private void Update()
@@ -38,13 +39,14 @@ public class PlayerMove : MonoBehaviour
                 rb.velocity = new Vector3(direction.x, 0, direction.y).normalized * speed;
                 characterAnimation.ChangeAnim("run");
             }
-            
+            player.isMoving = true;
         }
         if (Input.GetMouseButtonUp(0))
         {
             characterAnimation.ChangeAnim("idle");
             joystickBackground.transform.position += new Vector3(10000, 0, 0);//hide joystick
             rb.velocity = new Vector3(0, 0, 0);
+            player.isMoving = false;
         }
     }
 }

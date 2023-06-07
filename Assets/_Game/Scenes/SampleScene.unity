@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponClones: {fileID: 1748901679}
-  prefabWeapon: {fileID: 8918637127610886616, guid: c8a6b0c629ee16d47a7152da4e6dda15, type: 3}
+  prefabWeapon: {fileID: 2270312123352418151, guid: 03f912e5c2502eb42b8c56536df3ed9b, type: 3}
   poolSize: 5
   character: {fileID: 1851957517}
   poolWeapon: []
@@ -1782,7 +1782,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778219527}
-  m_LocalRotation: {x: 0.086960696, y: 0.02497925, z: 0.026845884, w: 0.9955366}
+  m_LocalRotation: {x: 0.0869607, y: 0.02497925, z: 0.026845885, w: 0.9955366}
   m_LocalPosition: {x: 0.000000042915342, y: 0.18983665, z: 0.000000031217933}
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1824,6 +1824,37 @@ Transform:
   m_Father: {fileID: 691501118}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -7.042603, y: 1.0425695, z: 36.163273}
+--- !u!1 &790178101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 790178102}
+  m_Layer: 0
+  m_Name: RightHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &790178102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790178101}
+  m_LocalRotation: {x: 0, y: 0, z: -0.86602545, w: 0.49999994}
+  m_LocalPosition: {x: -0.027, y: 0.08, z: 0.072}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6003052535718783447}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120}
 --- !u!1 &796049921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,6 +3078,7 @@ MonoBehaviour:
   joystickBackground: {fileID: 1199097680368918068}
   joystickHandle: {fileID: 1199097680290413623}
   characterAnimation: {fileID: 1304807414}
+  player: {fileID: 1304807415}
   rb: {fileID: 1304807411}
 --- !u!114 &1304807414
 MonoBehaviour:
@@ -3074,7 +3106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAnim: {fileID: 1304807414}
-  deathMaterial: {fileID: 2100000, guid: 955c9c1fdcf423d45b3c5747cef44b04, type: 2}
+  deathMaterial: {fileID: 2100000, guid: 6565235a135b12a4b875caea11e73ca1, type: 2}
   capsulCollider: {fileID: 1304807410}
   body: {fileID: 1304807409}
   enemyList: []
@@ -3082,11 +3114,12 @@ MonoBehaviour:
   skinnedMeshRenderer: {fileID: 524359564003889988}
   onHandWeapon: {fileID: 0}
   weaponPool: {fileID: 232306778}
-  rightHand: {fileID: 0}
+  rightHand: {fileID: 790178102}
   isDead: 0
   isMoving: 0
   whiteMaterial: {fileID: 2100000, guid: 955c9c1fdcf423d45b3c5747cef44b04, type: 2}
   rb: {fileID: 1304807411}
+  prefabWeapon: {fileID: 2270312123352418151, guid: 03f912e5c2502eb42b8c56536df3ed9b, type: 3}
 --- !u!114 &1304807416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3100,7 +3133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1304807415}
-  rightHand: {fileID: 6003052535718783447}
+  rightHand: {fileID: 790178102}
   targetWeapon: {fileID: 684452651}
   weaponPool: {fileID: 232306778}
   attackRange: 12
@@ -6231,6 +6264,7 @@ Transform:
   m_Children:
   - {fileID: 159046863116790123}
   - {fileID: 3373197664810568212}
+  - {fileID: 790178102}
   m_Father: {fileID: 7402050280926092875}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -13.808086, y: -0.65703666, z: 6.5834446}
