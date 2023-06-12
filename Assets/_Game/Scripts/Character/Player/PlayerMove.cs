@@ -19,6 +19,10 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if(player.isDead)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             firstMousePosition = Input.mousePosition;

@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected CharacterAnimation characterAnim;
     [SerializeField] protected Material deathMaterial;
     [SerializeField] protected CapsuleCollider capsulCollider;
-    [SerializeField] protected GameObject body;
+    //[SerializeField] protected GameObject body;
 
     public List<Character> enemyList = new List<Character>();
     public List<Weapon> pooledWeaponList = new List<Weapon>();

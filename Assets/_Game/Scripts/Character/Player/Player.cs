@@ -29,6 +29,7 @@ public class Player : Character
         DisableCollider();
         characterAnim.ChangeAnim("dead");
         isDead = true;
+        HideOnHandWeapon();
         skinnedMeshRenderer.material = deathMaterial;
     }
     public override void EnableCollider()
@@ -70,12 +71,16 @@ public class Player : Character
         onHandWeapon.transform.localPosition = Vector3.zero;
         onHandWeapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
         onHandWeapon.GetComponent<BoxCollider>().enabled = false;
+        wp.GetComponent<Weapon>().SetCharacterAndWeaponPool(this, this.weaponPool);
+        
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("weapon")) 
+        if (other.CompareTag("weapon") && other.GetComponent<Weapon>().GetCharacter() != this) 
         {
-            OnDeath();
+            //OnDeath();
+            //other.GetComponent<Weapon>().ReturnToPool();
+            //Debug.Log("aaaaaaaaaaaaaaaa");
         }
     }
 }

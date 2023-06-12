@@ -7,6 +7,7 @@ TagManager:
   - player
   - bot
   - weapon
+  - wall
   layers:
   - Default
   - TransparentFX

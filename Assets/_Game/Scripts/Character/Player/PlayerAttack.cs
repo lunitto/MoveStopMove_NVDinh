@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
-public class PlayerAttack : MonoBehaviour
-{
-    [SerializeField] protected Character character;
-    [SerializeField] protected Transform rightHand;
-    [SerializeField] protected Transform targetWeapon;
-    [SerializeField] protected WeaponPool weaponPool;
-    [SerializeField] protected float attackRange;
-    [SerializeField] protected CharacterAnimation characterAnimation;
+public class PlayerAttack : CharacterAttack
+{   
     [SerializeField] private TargetCircle targetCircle;
 
     private bool canAttack;
-    public Character enemy;
+   
 
     protected void Start()
     {
@@ -49,11 +43,12 @@ public class PlayerAttack : MonoBehaviour
             enemy = null;
         }
 
-        if (canAttack && character.isMoving == false && enemy != null)
+        if (canAttack && character.isMoving == false && enemy != null && !enemy.isDead)
         {
             RotateToTarget();
             StartCoroutine(Attack());
-            StartCoroutine(DelayAttack(2f));
+            StartCoroutine(DelayAttack(1f));
+            CheckEnemy();
         }
 
         if (character.enemyList.Count > 0)
@@ -64,38 +59,20 @@ public class PlayerAttack : MonoBehaviour
         {
             targetCircle.Deactive();
         }
+        
     }
 
-    public void FindNearestTarget()
+    public void CheckEnemy()
     {
-        this.enemy = null;
-        if (character.enemyList.Count > 0)
+        for (int i = 0; i < character.enemyList.Count; i++)
         {
-            float minDistance = 100f;
-            for (int i = 0; i < this.character.enemyList.Count; i++)
+            if (!this.gameObject.activeInHierarchy)
             {
-                float distance = Vector3.Distance(transform.position, this.character.enemyList[i].transform.position);
-                if (distance < minDistance)
-                {
-                    this.enemy = this.character.enemyList[i];
-                    minDistance = distance;
-                }
+                character.enemyList.Remove(character.enemyList[i]);
             }
         }
     }
-
-    public void RotateToTarget()
-    {
-        if (this.enemy != null)
-        {
-            Vector3 dir;
-            dir = this.enemy.transform.position - this.transform.position;
-            dir.y = 0;
-            transform.rotation = Quaternion.LookRotation(dir);
-        }
-    }
-
-
+   
     public IEnumerator Attack()
     {
         if (enemy != null)
@@ -107,19 +84,23 @@ public class PlayerAttack : MonoBehaviour
             float duration = 0.4f;
             while (elapsedTime < duration)
             {
-                
-                elapsedTime += Time.deltaTime;
+                if(character.isMoving)
+                {
+                    goto label;
+                }
+                else
+                {
+                    elapsedTime += Time.deltaTime;
+                }              
                 yield return null;
             }
             character.HideOnHandWeapon();
             GameObject obj = character.weaponPool.GetObject(); // lay weapon tu` pool
             obj.transform.position = rightHand.transform.position; // dat weapon vao tay character
-            Vector3 dir = enemyPos - obj.transform.position;
-            dir.y = 0;
-            dir = dir.normalized;
-            targetWeapon.position = obj.transform.position + dir * attackRange;
+            TargetWeapon(obj, enemyPos);
             StartCoroutine(FlyWeaponToTarget(obj, targetWeapon.position, 10f));
         }
+        label:;
         yield return null;
     }
 
@@ -138,23 +119,8 @@ public class PlayerAttack : MonoBehaviour
         {
             characterAnimation.ChangeAnim("idle");
         }
+        character.enemyList.Clear();
         character.ShowOnHandWeapon();
     }
 
-
-    public IEnumerator FlyWeaponToTarget(GameObject obj, Vector3 target, float speed)
-    {
-        while (Vector3.Distance(obj.transform.position, target) > 0.1f && obj.activeSelf)
-        {
-            obj.transform.position = Vector3.MoveTowards(obj.transform.position, target, speed * Time.deltaTime);
-            
-            obj.transform.Rotate(0, 0, -speed);
-           
-            yield return null;
-        }
-        character.weaponPool.ReturnToPool(obj); // sau khi bay den target thi cat vao pool
-        yield return null;
-    }
-
-    
 }

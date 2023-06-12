@@ -17,6 +17,10 @@ public class Weapon : MonoBehaviour
         meshRenderer.material = weaponData.GetWeaponMaterial(index);
     }
 
+    public Character GetCharacter()
+    {
+        return this.character;
+    }
     public void SetCharacterAndWeaponPool(Character character, WeaponPool weaponPool)
     {
         this.character = character;
@@ -25,18 +29,24 @@ public class Weapon : MonoBehaviour
 
     public IEnumerator ReturnToPoolAfterSeconds()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0);
         weaponPool.ReturnToPool(this.gameObject);
         yield return null;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ReturnToPool()
+    {
+        weaponPool.ReturnToPool(this.gameObject);
+    }
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("bot") || other.gameObject.CompareTag("player"))
         {
-            Character character = other.gameObject.GetComponent<Character>();
-            if(character != this.character)
+            //Debug.Log("aaaaaaaaaaaaaaaa");
+            Character otherCharacter = other.gameObject.GetComponent<Character>();
+            if(otherCharacter != this.character)
             {
+                otherCharacter.OnDeath();
                 weaponPool.ReturnToPool(this.gameObject);
             }
         }

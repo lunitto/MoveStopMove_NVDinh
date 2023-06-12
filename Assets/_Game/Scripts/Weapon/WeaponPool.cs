@@ -21,7 +21,7 @@ public class WeaponPool : MonoBehaviour
         OnInit();
     }
 
-    private void OnInit()
+    public void OnInit()
     {
         for (int i = 0; i < poolSize; i++)
         {
@@ -39,6 +39,7 @@ public class WeaponPool : MonoBehaviour
         }
     }
 
+    
     public GameObject GetObject()
     {
         foreach (GameObject obj in poolWeapon)

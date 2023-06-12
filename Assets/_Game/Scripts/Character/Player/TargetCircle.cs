@@ -7,7 +7,7 @@ public class TargetCircle : MonoBehaviour
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private float rotateSpeed;
     public Transform enemyTransform;
-    
+    //public bool active;
 
     // Update is called once per frame
     void Update()
@@ -20,6 +20,7 @@ public class TargetCircle : MonoBehaviour
                 transform.position = enemyTransform.position;
             }
         }
+      
     }
 
     public void Active()
@@ -28,7 +29,7 @@ public class TargetCircle : MonoBehaviour
         {
             this.gameObject.SetActive(true);
         }
-        if (playerAttack.enemy != null)
+        if (playerAttack.enemy != null )
         {
             this.enemyTransform = playerAttack.enemy.transform;
         }

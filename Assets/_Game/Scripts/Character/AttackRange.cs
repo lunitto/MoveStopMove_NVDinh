@@ -12,10 +12,11 @@ public class AttackRange : MonoBehaviour
             if (other.gameObject.CompareTag("bot") || other.gameObject.CompareTag("player"))
             {
                 Character otherCharacter = other.gameObject.GetComponent<Character>();
-                if (otherCharacter.isDead == false)
+                if (otherCharacter.isDead == false )
                 {
                     character.enemyList.Add(other.gameObject.GetComponent<Character>());
                 }
+                
             }
         }
 
