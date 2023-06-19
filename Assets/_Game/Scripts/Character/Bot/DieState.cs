@@ -4,43 +4,38 @@ using UnityEngine;
 
 public class DieState : IState
 {
-    //float elapsedTime;
-    //float duration;
-    int botAlive = 5;
+    float elapsedTime;
+    float duration;
+    public int botAlive = 5;
     public void OnEnter(Bot bot)
     {
         //duration = 2f;
         //elapsedTime = 0f;
-        bot.OnDeath();
+        
+        //bot.OnDeath();
         bot.StopMoving();
-        botAlive--;
+
+        //Debug.Log("aaaaaaaaaaaaaaaaa");
         BotManager.instance.DesSpawn(bot);
-    }
+        //BotManager.instance.SpawnBot();
+
+        botAlive--;
+        //BotManager.instance.SpawnBot();
+    }  
     public void OnExecute(Bot bot)
     {
-        //if (elapsedTime < duration)
-        //{
-        //    elapsedTime += Time.deltaTime;
-            
-        //}
-        //else 
-        if (botAlive < 5)
+        
+         if (elapsedTime < duration)
         {
-            Vector3 spawnRotate = new Vector3(0, Random.Range(0, 360), 0);
-            Vector3 spawnPosition;
-
-
-            int randomX = (int)Random.Range(-36, 16);
-            int randomZ = (int)Random.Range(-24, 16);
-            spawnPosition = new Vector3(randomX, 18, randomZ);
-
-            Bot BotClone = bot.botManager.botPool.GetObject().GetComponent<Bot>();
-            BotClone.transform.position = spawnPosition;
-            BotClone.transform.rotation = Quaternion.Euler(spawnRotate);
-            BotClone.OnInit();
+            elapsedTime += Time.deltaTime;
+            
+        }
+        else 
+        if (botAlive <5)
+        {
+            //BotManager.instance.DesSpawn(bot);
+            //Debug.Log("aaaaaaaaaaaaaaaaa");
             //BotManager.instance.SpawnBot();
-            GameObject obj = bot.botManager.botPool.GetObject();
-
             botAlive++;
         }
         

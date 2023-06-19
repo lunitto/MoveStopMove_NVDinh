@@ -75,4 +75,28 @@ public class BotManager : MonoBehaviour
         }
         return false;
     }
+
+    public void EnableAllBots()
+    {
+        for ( int i=0; i < botList.Count; i++)
+        {
+            if (botList[i].isDead == false)
+            {
+                botList[i].ChangeState(new PatrolState());
+            }
+        }
+        GameManager.instance.isGaming = true;
+    }
+
+    public void DisableAllBots()
+    {
+        for (int i = 0; i < botList.Count; i++)
+        {
+            if (botList[i].isDead == false)
+            {
+                botList[i].ChangeState(new IdleState());
+            }
+        }
+        GameManager.instance.isGaming = false;
+    }
 }

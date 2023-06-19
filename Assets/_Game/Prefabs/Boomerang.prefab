@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.227477, y: 1, z: 8.941702}
-  m_Center: {x: 2.113739, y: 0, z: 0.016892433}
+  m_Size: {x: 0.6448255, y: 0.10202727, z: 1.4447442}
+  m_Center: {x: 0.34626284, y: 0.006078534, z: 0.025559962}
 --- !u!114 &4837303077301452404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,9 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: e4e7d9fb5df69f24a9030eaff7c26f28, type: 2}
   child: {fileID: 476327287634446526}
   meshRenderer: {fileID: 476327287636347486}
-  currentMaterialIndex: 1
+  currentMaterialIndext: 0
+  isPurchased: 0
+  isStuckAtObstacle: 0
 --- !u!1001 &476327287634055742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77,6 +79,18 @@ PrefabInstance:
     - target: {fileID: 400000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
       propertyPath: m_LocalPosition.x

@@ -18,13 +18,13 @@ public class IdleState : IState
         if (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            if (bot.botAttack.enemy != null && !bot.botAttack.enemy.isDead)
+            if (bot.botAttack.enemy != null && !bot.botAttack.enemy.isDead && GameManager.instance.isGaming)
             {
                bot.ChangeState(new AttackState());
             }
                        
         }
-        else
+        else if (GameManager.instance.isGaming)
         {
             bot.ChangeState(new PatrolState());
         }

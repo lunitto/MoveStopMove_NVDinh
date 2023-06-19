@@ -62,4 +62,5 @@ public class CharacterAttack : MonoBehaviour
         character.weaponPool.ReturnToPool(obj); // sau khi bay den target thi cat vao pool
         yield return null;
     }
+    
 }

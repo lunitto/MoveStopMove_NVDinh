@@ -48,7 +48,7 @@ public class PlayerAttack : CharacterAttack
             RotateToTarget();
             StartCoroutine(Attack());
             StartCoroutine(DelayAttack(1f));
-            CheckEnemy();
+            //CheckEnemy();
         }
 
         if (character.enemyList.Count > 0)
@@ -99,6 +99,7 @@ public class PlayerAttack : CharacterAttack
             obj.transform.position = rightHand.transform.position; // dat weapon vao tay character
             TargetWeapon(obj, enemyPos);
             StartCoroutine(FlyWeaponToTarget(obj, targetWeapon.position, 10f));
+            character.enemyList.Clear();
         }
         label:;
         yield return null;
@@ -119,7 +120,7 @@ public class PlayerAttack : CharacterAttack
         {
             characterAnimation.ChangeAnim("idle");
         }
-        character.enemyList.Clear();
+        //character.enemyList.Clear();
         character.ShowOnHandWeapon();
     }
 

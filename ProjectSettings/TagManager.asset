@@ -8,6 +8,8 @@ TagManager:
   - bot
   - weapon
   - wall
+  - weaponclone
+  - obstacle
   layers:
   - Default
   - TransparentFX

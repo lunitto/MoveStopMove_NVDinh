@@ -47,6 +47,7 @@ public class BotAttack : CharacterAttack
             obj.transform.position = rightHand.transform.position; // dat weapon vao tay character
             TargetWeapon(obj, enemyPos);
             StartCoroutine(FlyWeaponToTarget(obj, targetWeapon.position, 10f));
+            
         }
         yield return null;
     }

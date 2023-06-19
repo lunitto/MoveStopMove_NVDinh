@@ -20,7 +20,7 @@ public class TargetCircle : MonoBehaviour
                 transform.position = enemyTransform.position;
             }
         }
-      
+        
     }
 
     public void Active()

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 1
   weaponName: Hammer
-  weaponObject: {fileID: 0}
   weaponMats:
   - {fileID: 2100000, guid: 52e05d34cb864f9419bf3c9dbde14bb8, type: 2}
   - {fileID: 2100000, guid: db1459c1594bd3f4c91523e9e4eb1a83, type: 2}
+  rotateSpeed: 700
+  flySpeed: 10
   weaponCost: 0

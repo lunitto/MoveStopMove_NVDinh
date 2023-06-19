@@ -30,6 +30,7 @@ public class Player : Character
         characterAnim.ChangeAnim("dead");
         isDead = true;
         HideOnHandWeapon();
+        BotManager.instance.DisableAllBots();
         skinnedMeshRenderer.material = deathMaterial;
     }
     public override void EnableCollider()
@@ -64,7 +65,11 @@ public class Player : Character
 
     public void GetWeaponHand()
     {
-        GameObject wp = Instantiate(prefabWeapon);
+        GameObject wp = Instantiate(ShopWeapManager.instance.GetWeapon());
+        if (onHandWeapon != null)
+        {
+            Destroy(onHandWeapon);
+        }
         onHandWeapon = wp;
         ShowOnHandWeapon();
         onHandWeapon.transform.SetParent(rightHand.transform);

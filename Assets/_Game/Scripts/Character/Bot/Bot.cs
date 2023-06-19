@@ -30,7 +30,7 @@ public class Bot : Character
         currentState.OnExecute(this);
         if (isDead == true)
         {
-            ChangeState(new DieState());
+            return;
         }
     }
 
@@ -61,10 +61,11 @@ public class Bot : Character
     {
         DisableCollider();
         characterAnim.ChangeAnim("dead");
-        //ChangeState(new DieState());
+        ChangeState(new DieState());
         HideOnHandWeapon();
         isDead = true;
         skinnedMeshRenderer.material = deathMaterial;
+        GameManager.instance.DeleteCharacterInEnemyList(this);
     }
     public override void EnableCollider()
     {
@@ -116,7 +117,7 @@ public class Bot : Character
         {
             //OnDeath();
             //ChangeState(new DieState());
-            isDead = true;
+            //isDead = true;
 
         }
 

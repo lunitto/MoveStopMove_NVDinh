@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 2
   weaponName: Boomerang
-  weaponObject: {fileID: 0}
   weaponMats:
-  - {fileID: 2100000, guid: 0741701becb690c43b975847f330c931, type: 2}
   - {fileID: 2100000, guid: 63cdd4e4fceb04f478147a1a85ceb5d6, type: 2}
+  - {fileID: 2100000, guid: 0741701becb690c43b975847f330c931, type: 2}
+  rotateSpeed: 700
+  flySpeed: 10
   weaponCost: 0
