@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour
     public Text loseText;
     public Text rankText;
 
+    [Header("Indicator")]
+    [SerializeField] private GameObject indicator;
+
     [Header("Coin")]
     [SerializeField] private Text coinText;
     [SerializeField] private GameObject coin;
@@ -48,6 +51,7 @@ public class UIManager : MonoBehaviour
     {
         HideJoystick();
         HideAliveText();
+        HideIndicators();
     }
 
     private void Update()
@@ -60,6 +64,7 @@ public class UIManager : MonoBehaviour
         HideJoystick();
         HideLosePanel();
         HideWinPanel();
+        HideIndicators();
         HideWeaponShop();
         HideCoin();
         HideAliveText();
@@ -104,6 +109,15 @@ public class UIManager : MonoBehaviour
         losePanel.SetActive(false);
     }
 
+    public void ShowIndicators()
+    {
+        indicator.SetActive(true);
+    }
+
+    public void HideIndicators()
+    {
+        indicator.SetActive(false);
+    }
     public void ShowWeaponShop()
     {
         weaponShop.SetActive(true);

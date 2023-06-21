@@ -14,14 +14,17 @@ public class Bot : Character
     public Transform destinationTransform;
     public GameObject prefabWeapon;
     public NavMeshAgent navMeshAgent;
+    public Target indicator;
 
     public BotAttack botAttack;
     public BotManager botManager;
+    public GameObject botName;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        OnInit();
+        //OnInit();
     }
 
     // Update is called once per frame
@@ -39,9 +42,11 @@ public class Bot : Character
         base.OnInit();
         StopMoving();
         ChangeState(new IdleState());
+        ActiveNavmeshAgent();
         botAttack.enemy = null;
         GetWeaponHand();
-        skinnedMeshRenderer.material = whiteMaterial;
+        indicator.enabled = true;
+        skinnedMeshRenderer.material = Colors.instance.characterColors[(int)Random.Range(0, Colors.instance.characterColors.Length)];
         isMoving = false;
     }
 
@@ -64,6 +69,7 @@ public class Bot : Character
         ChangeState(new DieState());
         HideOnHandWeapon();
         isDead = true;
+        indicator.enabled = false;
         skinnedMeshRenderer.material = deathMaterial;
         GameManager.instance.DeleteCharacterInEnemyList(this);
     }

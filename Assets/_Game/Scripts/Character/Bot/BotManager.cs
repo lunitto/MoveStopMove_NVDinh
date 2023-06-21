@@ -48,8 +48,10 @@ public class BotManager : MonoBehaviour
         BotClone.transform.rotation = Quaternion.Euler(spawnRotate);
         BotClone.OnInit();
         BotClone.transform.SetParent(poolBot);
+        SpawnBotName(BotClone);
+        SpawnBotIndicator(BotClone);
 
-        if(botList.Count < size)
+        if (botList.Count < size)
         {
             botList.Add(BotClone);
         }
@@ -59,6 +61,20 @@ public class BotManager : MonoBehaviour
     {
         bot.DeActiveNavmeshAgent();
         botPool.ReturnToPool(bot.gameObject);
+    }
+
+    public void SpawnBotName(Bot bot)
+    {
+        //Debug.Log("spawn bot name");
+        GameObject botName = BotNamePool.instance.GetObject();
+        botName.GetComponent<BotName>().SetTargetTransform(bot.transform);
+        botName.GetComponent<BotName>().SetColor(bot);
+        bot.botName = botName;
+        botName.SetActive(true);
+    }
+    public void SpawnBotIndicator(Bot bot)
+    {
+        bot.indicator.SetColor(bot);
     }
     public bool CheckPosition(Vector3 pos)
     {

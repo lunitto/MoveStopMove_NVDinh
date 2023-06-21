@@ -23,12 +23,12 @@ public class PlayerMove : MonoBehaviour
         {
             return;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && GameManager.instance.isGaming)
         {
             firstMousePosition = Input.mousePosition;
             joystickBackground.transform.position = firstMousePosition;
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && GameManager.instance.isGaming)
         {
             currentMousePosition = Input.mousePosition;
             direction = currentMousePosition - firstMousePosition;

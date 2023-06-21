@@ -8,7 +8,7 @@ public class Player : Character
     [SerializeField] private Rigidbody rb;
     public GameObject prefabWeapon;
 
-    
+    public static Player instance;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,7 @@ public class Player : Character
         HideOnHandWeapon();
         BotManager.instance.DisableAllBots();
         skinnedMeshRenderer.material = deathMaterial;
+        UIManager.instance.ShowLosePanel();
     }
     public override void EnableCollider()
     {

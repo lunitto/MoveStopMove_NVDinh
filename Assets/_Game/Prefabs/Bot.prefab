@@ -1683,6 +1683,7 @@ GameObject:
   - component: {fileID: 5696566901441610862}
   - component: {fileID: 5696566901441610861}
   - component: {fileID: 5696566901441610860}
+  - component: {fileID: -973751724854109447}
   m_Layer: 0
   m_Name: Bot
   m_TagString: bot
@@ -1784,6 +1785,7 @@ MonoBehaviour:
   destinationTransform: {fileID: 5696566901871295425}
   prefabWeapon: {fileID: 2270312123352418151, guid: 03f912e5c2502eb42b8c56536df3ed9b, type: 3}
   navMeshAgent: {fileID: 5696566901441610860}
+  indicator: {fileID: -973751724854109447}
   botAttack: {fileID: 5696566901441610861}
   botManager: {fileID: 0}
 --- !u!114 &5696566901441610861
@@ -1829,6 +1831,23 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-973751724854109447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696566901441610859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 1
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &5696566901501441917
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,6 +35,7 @@ public class Character : MonoBehaviour
     public virtual void DisableCollider()
     { }
 
+
     public virtual void ShowOnHandWeapon()
     {
         if (this.onHandWeapon != null)

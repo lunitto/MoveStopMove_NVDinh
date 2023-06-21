@@ -109,11 +109,14 @@ public class GameManager : MonoBehaviour
     {
         BotManager.instance.EnableAllBots();
         UIManager.instance.HideMainMenu();
+        UIManager.instance.ShowIndicators();
         UIManager.instance.ShowJoystick();
         UIManager.instance.ShowAliveText();
         UIManager.instance.HideCoin();
         currentAlive = initialAlive;
         isGaming = true;
+        //Player.instance.isDead = false;
+        //Player.instance.Idle();
     }
     public void ResetTargetCircle()
     {

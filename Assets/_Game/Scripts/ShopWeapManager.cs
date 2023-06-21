@@ -46,36 +46,30 @@ public class ShopWeapManager : MonoBehaviour
 
     public void ChangeNext()
     {
-        for (int i = 0; i < weaponMats.Length; i++)
-        {
-            weaponMats[i].gameObject.SetActive(false);
-        }
-        weapons[currentWeapIndext].gameObject.SetActive(false);
+        UnDisplayWeapon(currentWeapIndext);
+        UnDisplayAllWeaponMats();
         currentWeapIndext++;
 
         if (currentWeapIndext == weaponMats.Length)
         {
             currentWeapIndext = 0;
         }
-        weapons[currentWeapIndext].gameObject.SetActive(true);
-        weaponMats[currentWeapIndext].SetActive(true);
+        DisplayWeapon(currentWeapIndext);
+        DisplayWeaponMats(currentWeapIndext);
     }
 
     public void ChangeBack()
     {
-        for (int i = 0; i < weaponMats.Length; i++)
-        {
-            weaponMats[i].gameObject.SetActive(false);
-        }
-        weapons[currentWeapIndext].gameObject.SetActive(false);
+        UnDisplayWeapon(currentWeapIndext);
+        UnDisplayAllWeaponMats();
         currentWeapIndext--;
 
         if (currentWeapIndext < 0)
         {
             currentWeapIndext = weapons.Length - 1;
         }
-        weapons[currentWeapIndext].gameObject.SetActive(true);
-        weaponMats[currentWeapIndext].SetActive(true);
+        DisplayWeapon(currentWeapIndext);
+        DisplayWeaponMats(currentWeapIndext);
     }
 
     public void BuyWeapon()
@@ -114,6 +108,48 @@ public class ShopWeapManager : MonoBehaviour
                 {
                     dictOutline[i].outlines[j].gameObject.SetActive(false);
                 }
+            }
+        }
+    }
+
+    public void UnDisplayAllWeaponMats()
+    {
+        for (int i = 0; i < weaponMats.Length; i++)
+        {
+            weaponMats[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void DisplayWeaponMats(int index)
+    {
+        weaponMats[index].gameObject.SetActive(true);
+    }
+    public void UnDisplayWeapon(int index)
+    {
+        weapons[index].gameObject.SetActive(false);
+    }
+
+    public void DisplayWeapon(int index)
+    {
+        weapons[index].gameObject.SetActive(true);
+        DisplayWeaponButtonText(index);
+    }
+    public void DisplayWeaponButtonText(int index)
+    {
+        weaponName.text = weapons[currentWeapIndext].weaponData.weaponName;
+        if (weapons[index].isPurchased == false)
+        {
+            weaponCost.text = weapons[currentWeapIndext].weaponData.weaponCost.ToString();
+        }
+        else
+        {
+            if (index == usingWeaponIndex)
+            {
+                weaponCost.text = "using";
+            }
+            else
+            {
+                weaponCost.text = "use";
             }
         }
     }
