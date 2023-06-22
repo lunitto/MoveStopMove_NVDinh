@@ -71,10 +71,17 @@ public class UIManager : MonoBehaviour
         HideMainMenu();
     }
 
+    //main menu
     public void HideMainMenu()
     {
         gameMenuMain.SetActive(false);
     }
+    public void ShowMainMenu()
+    {
+        gameMenuMain.SetActive(true);
+    }
+
+    //joystick
     public void ShowJoystick()
     {
         joystick.gameObject.SetActive(true);
@@ -87,6 +94,7 @@ public class UIManager : MonoBehaviour
         joystick.gameObject.SetActive(false);
     }
 
+    // win lose
     public void ShowWinPanel()
     {
         CloseAll();
@@ -109,6 +117,8 @@ public class UIManager : MonoBehaviour
         losePanel.SetActive(false);
     }
 
+
+    //indicator
     public void ShowIndicators()
     {
         indicator.SetActive(true);
@@ -118,6 +128,8 @@ public class UIManager : MonoBehaviour
     {
         indicator.SetActive(false);
     }
+
+    //weap shop
     public void ShowWeaponShop()
     {
         weaponShop.SetActive(true);
@@ -128,6 +140,7 @@ public class UIManager : MonoBehaviour
         weaponShop.SetActive(false);
     }
 
+    //coin
     public void ShowCoin()
     {
         coin.SetActive(true);
@@ -138,6 +151,7 @@ public class UIManager : MonoBehaviour
         coin.SetActive(false);
     }
 
+    //alive text
     public void ShowAliveText()
     {
         aliveTextObj.SetActive(true);
@@ -146,5 +160,10 @@ public class UIManager : MonoBehaviour
     public void HideAliveText()
     {
         aliveTextObj.SetActive(false);
+    }
+
+    public void SetRankText(int rank)
+    {
+        rankText.text = "Rank: " + rank.ToString();
     }
 }

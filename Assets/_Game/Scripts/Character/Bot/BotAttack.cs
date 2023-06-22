@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class BotAttack : CharacterAttack
 {
     [SerializeField] private CharacterAnimation characterAnim;
     [SerializeField] private Bot bot;
-    
-    
+
+
     // Update is called once per frame
     public void Update()
     {
@@ -22,36 +21,29 @@ public class BotAttack : CharacterAttack
     }
 
 
-    public IEnumerator Attack()
+    public override IEnumerator Attack()
     {
-        if (enemy != null)
-        {
-            Vector3 enemyPos = enemy.transform.position;
-            bot.StopMoving();
-            characterAnimation.ChangeAnim("attack");
-            RotateToTarget();
-            float elapsedTime = 0f;
-            float duration = 0.4f;
-            while (elapsedTime < duration)
-            {
 
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-            if (character.isDead)
-            {
-                yield break;
-            }
-            bot.HideOnHandWeapon();
-            GameObject obj = weaponPool.GetObject(); // lay weapon tu` pool
-            obj.transform.position = rightHand.transform.position; // dat weapon vao tay character
-            TargetWeapon(obj, enemyPos);
-            StartCoroutine(FlyWeaponToTarget(obj, targetWeapon.position, 10f));
-            
+        Vector3 enemyPos = enemy.transform.position;
+        bot.ShowOnHandWeapon();
+        characterAnimation.ChangeAnim("attack");
+        RotateToTarget();
+
+        yield return new WaitForSeconds(0.4f);//thời gian vung tay cho đến khi vũ khí rời bàn tay là 0.4s
+
+        if (character.isDead)
+        {
+            yield break;
         }
+        bot.HideOnHandWeapon();
+        Weapon newWeapon = weaponPool.GetObject().GetComponent<Weapon>(); // lay weapon tu` pool
+        newWeapon.transform.position = rightHand.transform.position; // dat weapon vao tay phai character
+        TargetWeapon(newWeapon.gameObject, enemyPos);
+        newWeapon.Fly(targetWeapon.position, newWeapon.weaponData.flySpeed);
+
         yield return null;
     }
 
-    
+
 
 }

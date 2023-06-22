@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterAttack : MonoBehaviour
+public abstract class CharacterAttack : MonoBehaviour
 {
     [SerializeField] protected Character character;
     [SerializeField] protected Transform rightHand;
@@ -49,6 +49,9 @@ public class CharacterAttack : MonoBehaviour
         dir = dir.normalized;
         targetWeapon.position = obj.transform.position + dir * this.attackRange;
     }
+
+    public abstract IEnumerator Attack();
+
     public IEnumerator FlyWeaponToTarget(GameObject obj, Vector3 target, float speed)
     {
         while (Vector3.Distance(obj.transform.position, target) > 0.1f && obj.activeSelf)

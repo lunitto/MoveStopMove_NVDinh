@@ -4,44 +4,38 @@ using UnityEngine;
 
 public class DieState : IState
 {
-    float elapsedTime;
     float duration;
-    public int botAlive = 5;
+    float elasedTime;
+    int tempAlive;
+
+
     public void OnEnter(Bot bot)
     {
-        //duration = 2f;
-        //elapsedTime = 0f;
-        
-        //bot.OnDeath();
+        elasedTime = 0f;
+        duration = 2f;
         bot.StopMoving();
-
-        //Debug.Log("aaaaaaaaaaaaaaaaa");
-        BotManager.instance.DesSpawn(bot);
-        //BotManager.instance.SpawnBot();
-
-        botAlive--;
-        //BotManager.instance.SpawnBot();
-    }  
-    public void OnExecute(Bot bot)
-    {
         
-         if (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            
-        }
-        else 
-        if (botAlive <5)
-        {
-            //BotManager.instance.DesSpawn(bot);
-            //Debug.Log("aaaaaaaaaaaaaaaaa");
-            //BotManager.instance.SpawnBot();
-            botAlive++;
-        }
-        
+        bot.OnDeath();
+        GameManager.instance.currentAlive--;
+        tempAlive = GameManager.instance.currentAlive;
     }
 
-    public void OnExit(Bot bot)
-    { }
+    public void OnExecute(Bot bot)
+    {
+        if (elasedTime < duration)
+        {
+            elasedTime += Time.deltaTime;
+        }
+        else
+        {
+            BotManager.instance.DeSpawn(bot);
+            if (tempAlive > BotManager.instance.size)
+            {
+                BotManager.instance.SpawnBot();
+            }
+        }
+    }
+
+    public void OnExit(Bot bot) { }
 
 }

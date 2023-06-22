@@ -13,7 +13,7 @@ public class PatrolState : IState
         duration = Random.Range(4f, 7f);
         //randomRotateValue = Random.Range(0.4f, 0.6f);
         bot.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(-120f, 120f), 0));
-
+        bot.ShowOnHandWeapon();
         bot.Move();
     }
     public void OnExecute(Bot bot)

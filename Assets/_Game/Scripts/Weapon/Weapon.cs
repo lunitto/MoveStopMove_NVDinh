@@ -84,7 +84,18 @@ public class Weapon : MonoBehaviour
             if(otherCharacter != this.character)
             {
                 otherCharacter.OnDeath();
+                otherCharacter.isDead = true;
+                
                 weaponPool.ReturnToPool(this.gameObject);
+            }
+            if(other.gameObject.CompareTag("bot"))
+            {
+                (otherCharacter as Bot).ChangeState(new DieState());
+            }
+            if(other.gameObject.CompareTag("player"))
+            {
+                string nameEnemy = this.GetComponent<Weapon>().GetCharacter().GetComponent<Bot>().botName.GetComponent<BotName>().nameString;
+                UIManager.instance.loseText.text = "KILLED BY: " + nameEnemy;
             }
         }
 

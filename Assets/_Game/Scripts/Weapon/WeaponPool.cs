@@ -41,7 +41,16 @@ public class WeaponPool : MonoBehaviour
         }
     }
 
-    
+    public void OnDestroy()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            Destroy(poolWeapon[i]);
+        }
+        poolWeapon.Clear();
+        character.pooledWeaponList.Clear();
+    }
+
     public GameObject GetObject()
     {
         foreach (GameObject obj in poolWeapon)

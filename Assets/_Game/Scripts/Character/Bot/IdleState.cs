@@ -10,7 +10,7 @@ public class IdleState : IState
     {
         duration = Random.Range(1f, 2f);
         elapsedTime = 0f;
-        
+        bot.ShowOnHandWeapon();
         bot.StopMoving();
     }
     public void OnExecute(Bot bot)

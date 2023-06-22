@@ -8,7 +8,7 @@ public class Player : Character
     [SerializeField] private Rigidbody rb;
     public GameObject prefabWeapon;
 
-    public static Player instance;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +19,9 @@ public class Player : Character
     {
         base.OnInit();
         StopMoving();
-        characterAnim.ChangeAnim("idle");
         GetWeaponHand();
+        characterAnim.ChangeAnim("idle");
+        
         skinnedMeshRenderer.material = whiteMaterial;
         isMoving = false;
     }
@@ -28,11 +29,12 @@ public class Player : Character
     {
         DisableCollider();
         characterAnim.ChangeAnim("dead");
-        isDead = true;
-        HideOnHandWeapon();
-        BotManager.instance.DisableAllBots();
         skinnedMeshRenderer.material = deathMaterial;
+        UIManager.instance.SetRankText(GameManager.instance.currentAlive);
+        BotManager.instance.DisableAllBots();
+        UIManager.instance.HideJoystick();
         UIManager.instance.ShowLosePanel();
+        isDead = true;
     }
     public override void EnableCollider()
     {
@@ -78,7 +80,9 @@ public class Player : Character
         onHandWeapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
         onHandWeapon.GetComponent<BoxCollider>().enabled = false;
         wp.GetComponent<Weapon>().SetCharacterAndWeaponPool(this, this.weaponPool);
-        
+        weaponPool.prefabWeapon = wp;
+        weaponPool.OnDestroy();
+        weaponPool.OnInit();
     }
     public void OnTriggerEnter(Collider other)
     {

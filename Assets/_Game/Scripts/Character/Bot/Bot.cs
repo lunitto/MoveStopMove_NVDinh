@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Bot : Character
+public class Bot : Character, INavMeshAgent
 {
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Transform targetWeapon;
 
     private IState currentState = new IdleState();
-
     public bool isWall;
     public Transform destinationTransform;
+
     public GameObject prefabWeapon;
     public NavMeshAgent navMeshAgent;
     public Target indicator;
@@ -19,6 +20,7 @@ public class Bot : Character
     public BotAttack botAttack;
     public BotManager botManager;
     public GameObject botName;
+    public bool isHaveWeapon;
 
 
     // Start is called before the first frame update
@@ -40,14 +42,24 @@ public class Bot : Character
     public override void OnInit()
     {
         base.OnInit();
-        StopMoving();
-        ChangeState(new IdleState());
         ActiveNavmeshAgent();
+        ChangeState(new IdleState());       
         botAttack.enemy = null;
-        GetWeaponHand();
         indicator.enabled = true;
         skinnedMeshRenderer.material = Colors.instance.characterColors[(int)Random.Range(0, Colors.instance.characterColors.Length)];
-        isMoving = false;
+ 
+    }
+
+    
+    public override void OnDeath()
+    {
+        DisableCollider();
+        characterAnim.ChangeAnim("dead");
+        //ChangeState(new DieState());
+        HideOnHandWeapon();
+        indicator.enabled = false;
+        skinnedMeshRenderer.material = deathMaterial;
+        GameManager.instance.DeleteThisElementInEnemyLists(this);
     }
 
     public void ChangeState(IState newState)
@@ -62,57 +74,31 @@ public class Bot : Character
             currentState.OnEnter(this);
         }
     }
-    public override void OnDeath()
-    {
-        DisableCollider();
-        characterAnim.ChangeAnim("dead");
-        ChangeState(new DieState());
-        HideOnHandWeapon();
-        isDead = true;
-        indicator.enabled = false;
-        skinnedMeshRenderer.material = deathMaterial;
-        GameManager.instance.DeleteCharacterInEnemyList(this);
-    }
     public override void EnableCollider()
     {
         capsulCollider.enabled = true;
-        rb.velocity = Vector3.zero;
-        rb.useGravity = true;
+        
     }
 
     public override void DisableCollider()
     {
         capsulCollider.enabled = false;
-        rb.velocity = Vector3.zero;
-        rb.useGravity = false;
+        
     }
 
     public void Move()
     {
         characterAnim.ChangeAnim("run");
         navMeshAgent.isStopped = false;
-        isMoving = true;
+        //isMoving = true;
     }
     public void StopMoving()
     {
-        //rb.velocity = new Vector3(0, 0, 0);
-        characterAnim.ChangeAnim("idle");
-        navMeshAgent.isStopped = true;
+        characterAnim.ChangeAnim("idle");        
         navMeshAgent.velocity = new Vector3(0, 0, 0);
-        isMoving = false;
+        navMeshAgent.isStopped = true;
     }
-    public void GetWeaponHand()
-    {
-        GameObject wp = Instantiate(prefabWeapon);
-        onHandWeapon = wp;
-        ShowOnHandWeapon();
-        onHandWeapon.transform.SetParent(rightHand.transform);
-        onHandWeapon.transform.localPosition = Vector3.zero;
-        onHandWeapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        onHandWeapon.GetComponent<BoxCollider>().enabled = false;
-        wp.GetComponent<Weapon>().SetCharacterAndWeaponPool(this, this.weaponPool);
-        
-    }
+    
     public void OnTriggerEnter(Collider other)
     {
         if (isDead)

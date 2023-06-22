@@ -1769,7 +1769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAnim: {fileID: 5696566901441610858}
-  deathMaterial: {fileID: 2100000, guid: 955c9c1fdcf423d45b3c5747cef44b04, type: 2}
+  deathMaterial: {fileID: 2100000, guid: 6565235a135b12a4b875caea11e73ca1, type: 2}
   capsulCollider: {fileID: 5696566901441610857}
   enemyList: []
   pooledWeaponList: []
@@ -1781,6 +1781,7 @@ MonoBehaviour:
   isMoving: 0
   whiteMaterial: {fileID: 2100000, guid: 955c9c1fdcf423d45b3c5747cef44b04, type: 2}
   rb: {fileID: 5696566901441610856}
+  targetWeapon: {fileID: 5696566902206318103}
   isWall: 0
   destinationTransform: {fileID: 5696566901871295425}
   prefabWeapon: {fileID: 2270312123352418151, guid: 03f912e5c2502eb42b8c56536df3ed9b, type: 3}
@@ -1788,6 +1789,7 @@ MonoBehaviour:
   indicator: {fileID: -973751724854109447}
   botAttack: {fileID: 5696566901441610861}
   botManager: {fileID: 0}
+  botName: {fileID: 0}
 --- !u!114 &5696566901441610861
 MonoBehaviour:
   m_ObjectHideFlags: 0

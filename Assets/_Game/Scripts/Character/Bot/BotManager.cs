@@ -32,6 +32,37 @@ public class BotManager : MonoBehaviour
 
     public void SpawnBot()
     {
+        Bot BotClone = botPool.GetObject().GetComponent<Bot>();
+        SetPosAndRotBot(BotClone);
+        BotClone.transform.SetParent(poolBot);
+        BotClone.transform.SetParent(poolBot);
+        BotClone.OnInit();
+        SpawnBotName(BotClone);
+        SpawnBotIndicator(BotClone);
+        SpawnWeaponBot(BotClone);
+        if (botList.Count < size)
+        {
+            botList.Add(BotClone);
+        }
+        if (!GameManager.instance.characterList.Contains(BotClone))
+        {
+            GameManager.instance.characterList.Add(BotClone);
+        }
+        //spawn weapon
+        
+    }
+
+    public void DeSpawn (Bot bot)
+    {
+        bot.DeActiveNavmeshAgent();
+        BotNamePool.instance.ReturnToPool(bot.botName);
+        GameManager.instance.characterList.Remove(bot);
+        botPool.ReturnToPool(bot.gameObject);
+    }
+
+    public void SetPosAndRotBot(Bot bot)
+    {
+        
         Vector3 spawnRotate = new Vector3(0, Random.Range(0, 360), 0);
         Vector3 spawnPosition;
         do
@@ -40,29 +71,21 @@ public class BotManager : MonoBehaviour
             int randomZ = (int)Random.Range(bottomRight.position.z, topLeft.position.z);
             spawnPosition = new Vector3(randomX, initialY, randomZ);
         } while (CheckPosition(spawnPosition));
-
-
-
-        Bot BotClone = botPool.GetObject().GetComponent<Bot>();
-        BotClone.transform.position = spawnPosition;
-        BotClone.transform.rotation = Quaternion.Euler(spawnRotate);
-        BotClone.OnInit();
-        BotClone.transform.SetParent(poolBot);
-        SpawnBotName(BotClone);
-        SpawnBotIndicator(BotClone);
-
-        if (botList.Count < size)
-        {
-            botList.Add(BotClone);
-        }
+        bot.transform.position = spawnPosition;
+        bot.transform.rotation = Quaternion.Euler(spawnRotate);
     }
 
-    public void DesSpawn (Bot bot)
+    public bool CheckPosition(Vector3 pos)
     {
-        bot.DeActiveNavmeshAgent();
-        botPool.ReturnToPool(bot.gameObject);
+        for (int i = 0; i < GameManager.instance.characterList.Count; i++)
+        {
+            if (Vector3.Distance(GameManager.instance.characterList[i].transform.position, pos) < spawnDisance)
+            {
+                return true;
+            }
+        }
+        return false;
     }
-
     public void SpawnBotName(Bot bot)
     {
         //Debug.Log("spawn bot name");
@@ -76,21 +99,25 @@ public class BotManager : MonoBehaviour
     {
         bot.indicator.SetColor(bot);
     }
-    public bool CheckPosition(Vector3 pos)
+
+    public void SpawnWeaponBot(Bot bot)
     {
-        if (botList.Count < 2)
+        if (bot.isHaveWeapon == false)
         {
-            return false;
+            GameObject newWeaponObj = Instantiate(ShopWeapManager.instance.weapons[(int)Random.Range(0, ShopWeapManager.instance.weapons.Length)].gameObject);
+            Weapon newWeapon = newWeaponObj.GetComponent<Weapon>();
+            newWeapon.gameObject.SetActive(true);
+            newWeapon.transform.SetParent(bot.rightHand.transform);
+            newWeapon.transform.localPosition = Vector3.zero;
+            newWeapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            newWeapon.SetCharacterAndWeaponPool(bot, bot.weaponPool);
+            bot.onHandWeapon = newWeapon.gameObject;
+            bot.weaponPool.prefabWeapon = newWeapon.gameObject;
+            bot.onHandWeapon.GetComponent<BoxCollider>().enabled = false;
+            bot.isHaveWeapon = true;
         }
-        for (int i = 0; i < botList.Count; i++)
-        {
-            if (Vector3.Distance(botList[i].transform.position, pos) < spawnDisance)
-            {
-                return true;
-            }
-        }
-        return false;
     }
+    
 
     public void EnableAllBots()
     {
@@ -110,6 +137,7 @@ public class BotManager : MonoBehaviour
         {
             if (botList[i].isDead == false)
             {
+                //Debug.Log("aaaaaaaa");
                 botList[i].ChangeState(new IdleState());
             }
         }

@@ -18,6 +18,10 @@ public class PlayerAttack : CharacterAttack
 
     protected void Update()
     {
+        if(GameManager.instance.isGaming == false)
+        {
+            return;
+        }
         if (character.isDead == true)
         {
             targetCircle.Deactive();
@@ -28,7 +32,13 @@ public class PlayerAttack : CharacterAttack
         {
             canAttack = false;
         }
-
+        if(Input.GetMouseButton(0))
+        {
+            if (!character.onHandWeapon.activeSelf)
+            {
+                character.ShowOnHandWeapon();
+            }
+        }
         if (Input.GetMouseButtonUp(0))
         {
             canAttack = true;
@@ -43,12 +53,11 @@ public class PlayerAttack : CharacterAttack
             enemy = null;
         }
 
-        if (canAttack && character.isMoving == false && enemy != null && !enemy.isDead)
+        if (canAttack && character.isMoving == false && enemy != null )
         {
             RotateToTarget();
             StartCoroutine(Attack());
-            StartCoroutine(DelayAttack(1f));
-            //CheckEnemy();
+            StartCoroutine(DelayAttack(1f));       
         }
 
         if (character.enemyList.Count > 0)
@@ -61,30 +70,20 @@ public class PlayerAttack : CharacterAttack
         }
         
     }
-
-    public void CheckEnemy()
-    {
-        for (int i = 0; i < character.enemyList.Count; i++)
-        {
-            if (!this.gameObject.activeInHierarchy)
-            {
-                character.enemyList.Remove(character.enemyList[i]);
-            }
-        }
-    }
    
-    public IEnumerator Attack()
+    public override IEnumerator Attack()
     {
         if (enemy != null)
         {
             Vector3 enemyPos = enemy.transform.position;
-            
-            characterAnimation.ChangeAnim("attack");
+            character.ShowOnHandWeapon();// hien thi weapon tren tay
+            characterAnimation.ChangeAnim("attack");// vung tay trong 0.4s
+
             float elapsedTime = 0f;
             float duration = 0.4f;
             while (elapsedTime < duration)
             {
-                if(character.isMoving)
+                if(character.isMoving)// neu character di chuyen thi cancel vung tay, dong thoi cancel weapon fly
                 {
                     goto label;
                 }
@@ -94,11 +93,12 @@ public class PlayerAttack : CharacterAttack
                 }              
                 yield return null;
             }
-            character.HideOnHandWeapon();
-            GameObject obj = character.weaponPool.GetObject(); // lay weapon tu` pool
-            obj.transform.position = rightHand.transform.position; // dat weapon vao tay character
-            TargetWeapon(obj, enemyPos);
-            StartCoroutine(FlyWeaponToTarget(obj, targetWeapon.position, 10f));
+            character.HideOnHandWeapon();// tat hien thi weapon tren tay
+            Weapon newWeapon = character.weaponPool.GetObject().GetComponent<Weapon>(); // lay weapon tu` pool
+            
+            newWeapon.transform.position = rightHand.transform.position; // dat weapon vao tay character
+            TargetWeapon(newWeapon.gameObject, enemyPos);// dam bao weapon bay qua center cua enemy
+            newWeapon.Fly(targetWeapon.position, newWeapon.weaponData.flySpeed);
             character.enemyList.Clear();
         }
         label:;
@@ -111,17 +111,25 @@ public class PlayerAttack : CharacterAttack
         float elapsedTime = 0f;
         float duration = delayTime;
         while (elapsedTime < duration)
-        {           
-            elapsedTime += Time.deltaTime;
+        {
+            if (character.isMoving) // neu di chuyen thi cancel coroutine, vi khi do canAttack == true
+            {
+                goto label1;
+            }
+            else
+            {
+                elapsedTime += Time.deltaTime;
+            }
             yield return null;
         }
         canAttack = true;
-        if (!character.isDead)
+        if (character.isDead == false && GameManager.instance.isGaming == true )
         {
             characterAnimation.ChangeAnim("idle");
         }
         //character.enemyList.Clear();
         character.ShowOnHandWeapon();
+    label1:;
     }
 
 }
