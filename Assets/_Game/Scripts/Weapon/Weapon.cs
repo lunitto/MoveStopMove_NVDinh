@@ -10,14 +10,14 @@ public class Weapon : MonoBehaviour
     private WeaponPool weaponPool;
     private Character character;
 
-    public int currentMaterialIndext;
+    public int currentMaterialIndex;
     public bool isPurchased;
     public bool isStuckAtObstacle;
 
     protected void Start()
     {
         
-        ChangeMaterial(currentMaterialIndext);
+        ChangeMaterial(currentMaterialIndex);
         isStuckAtObstacle = false;
     }
     public void ChangeMaterial(int index)
@@ -96,6 +96,11 @@ public class Weapon : MonoBehaviour
             {
                 string nameEnemy = this.GetComponent<Weapon>().GetCharacter().GetComponent<Bot>().botName.GetComponent<BotName>().nameString;
                 UIManager.instance.loseText.text = "KILLED BY: " + nameEnemy;
+            }
+            if(character is Bot && this.character is Player)
+            {
+                DataManager.ins.playerData.coin += 10;
+                UIManager.instance.UpdateUICoin();
             }
         }
 

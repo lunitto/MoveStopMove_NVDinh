@@ -249,14 +249,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5696566900451227031}
-  m_LocalRotation: {x: 0, y: 0, z: -0.86602545, w: 0.49999994}
+  m_LocalRotation: {x: -0.050088976, y: 0.08343244, z: -0.8414251, w: 0.53153926}
   m_LocalPosition: {x: -0.142, y: 0.14, z: 0.075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5696566900772493402}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120}
+  m_LocalEulerAnglesHint: {x: 5, y: 10, z: -115}
 --- !u!1 &5696566900467125981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e06f68af006234a8be0a672ea4a3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponClones: {fileID: 5696566901345385036}
+  weaponClones: {fileID: 0}
   prefabWeapon: {fileID: 2270312123352418151, guid: 03f912e5c2502eb42b8c56536df3ed9b, type: 3}
   poolSize: 5
   character: {fileID: 5696566901441610862}
@@ -1771,11 +1771,12 @@ MonoBehaviour:
   characterAnim: {fileID: 5696566901441610858}
   deathMaterial: {fileID: 2100000, guid: 6565235a135b12a4b875caea11e73ca1, type: 2}
   capsulCollider: {fileID: 5696566901441610857}
-  enemyList: []
-  pooledWeaponList: []
   skinnedMeshRenderer: {fileID: 5696566900588979605}
   onHandWeapon: {fileID: 0}
   weaponPool: {fileID: 5696566900984367179}
+  enemyList: []
+  pooledWeaponList: []
+  body: {fileID: 0}
   rightHand: {fileID: 5696566900451227030}
   isDead: 0
   isMoving: 0
@@ -1790,6 +1791,7 @@ MonoBehaviour:
   botAttack: {fileID: 5696566901441610861}
   botManager: {fileID: 0}
   botName: {fileID: 0}
+  isHaveWeapon: 0
 --- !u!114 &5696566901441610861
 MonoBehaviour:
   m_ObjectHideFlags: 0

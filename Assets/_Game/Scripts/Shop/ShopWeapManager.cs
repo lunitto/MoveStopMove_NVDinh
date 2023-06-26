@@ -23,7 +23,7 @@ public class ShopWeapManager : MonoBehaviour
     public GameObject[] weaponMats;
 
     [Header("Index")]
-    public int currentWeapIndext = 0;
+    public int currentWeapIndex;
     public int usingWeaponIndex;
 
     public static ShopWeapManager instance;
@@ -46,56 +46,56 @@ public class ShopWeapManager : MonoBehaviour
 
     public void ChangeNext()
     {
-        UnDisplayWeapon(currentWeapIndext);
+        UnDisplayWeapon(currentWeapIndex);
         UnDisplayAllWeaponMats();
-        currentWeapIndext++;
+        currentWeapIndex++;
 
-        if (currentWeapIndext == weaponMats.Length)
+        if (currentWeapIndex == weaponMats.Length)
         {
-            currentWeapIndext = 0;
+            currentWeapIndex = 0;
         }
-        DisplayWeapon(currentWeapIndext);
-        DisplayWeaponMats(currentWeapIndext);
+        DisplayWeapon(currentWeapIndex);
+        DisplayWeaponMats(currentWeapIndex);
     }
 
     public void ChangeBack()
     {
-        UnDisplayWeapon(currentWeapIndext);
+        UnDisplayWeapon(currentWeapIndex);
         UnDisplayAllWeaponMats();
-        currentWeapIndext--;
+        currentWeapIndex--;
 
-        if (currentWeapIndext < 0)
+        if (currentWeapIndex < 0)
         {
-            currentWeapIndext = weapons.Length - 1;
+            currentWeapIndex = weapons.Length - 1;
         }
-        DisplayWeapon(currentWeapIndext);
-        DisplayWeaponMats(currentWeapIndext);
+        DisplayWeapon(currentWeapIndex);
+        DisplayWeaponMats(currentWeapIndex);
     }
 
     public void BuyWeapon()
     {
-        if (weapons[currentWeapIndext].isPurchased == false)
+        if (weapons[currentWeapIndex].isPurchased == false)
         {
-            weapons[currentWeapIndext].isPurchased = true;
+            weapons[currentWeapIndex].isPurchased = true;
             
             weaponCost.text = "using";
-            usingWeaponIndex = currentWeapIndext;
+            usingWeaponIndex = currentWeapIndex;
             
         }
-        else if (weapons[currentWeapIndext].isPurchased == true)
+        else if (weapons[currentWeapIndex].isPurchased == true)
         {
             weaponCost.text = "using";
-            usingWeaponIndex = currentWeapIndext;
+            usingWeaponIndex = currentWeapIndex;
             
         }
     }
 
     public void ChooseMat(int order)
     {
-        Weapon wp = weapons[currentWeapIndext];
-        wp.currentMaterialIndext = order;
+        Weapon wp = weapons[currentWeapIndex];
+        wp.currentMaterialIndex = order;
         
-        wp.ChangeMaterial(wp.currentMaterialIndext);
+        wp.ChangeMaterial(wp.currentMaterialIndex);
     }
 
     public void HideOutlinesWithSameWeaponType(WeaponType weaponType)
@@ -136,10 +136,10 @@ public class ShopWeapManager : MonoBehaviour
     }
     public void DisplayWeaponButtonText(int index)
     {
-        weaponName.text = weapons[currentWeapIndext].weaponData.weaponName;
+        weaponName.text = weapons[currentWeapIndex].weaponData.weaponName;
         if (weapons[index].isPurchased == false)
         {
-            weaponCost.text = weapons[currentWeapIndext].weaponData.weaponCost.ToString();
+            weaponCost.text = weapons[currentWeapIndex].weaponData.weaponCost.ToString();
         }
         else
         {

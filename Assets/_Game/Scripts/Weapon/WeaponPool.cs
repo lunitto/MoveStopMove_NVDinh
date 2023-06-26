@@ -18,7 +18,7 @@ public class WeaponPool : MonoBehaviour
     }
     void Start()
     {
-        //weaponClones = GameObject.FindGameObjectWithTag("weaponclone").transform;
+        weaponClones = GameObject.FindGameObjectWithTag("weaponclone").transform;
         OnInit();
         
     }

@@ -94,11 +94,13 @@ public class PlayerAttack : CharacterAttack
                 yield return null;
             }
             character.HideOnHandWeapon();// tat hien thi weapon tren tay
-            Weapon newWeapon = character.weaponPool.GetObject().GetComponent<Weapon>(); // lay weapon tu` pool
-            
+            Weapon newWeapon = character.weaponPool.GetObject().GetComponent<Weapon>(); // lay weapon tu` pool          
             newWeapon.transform.position = rightHand.transform.position; // dat weapon vao tay character
+
             TargetWeapon(newWeapon.gameObject, enemyPos);// dam bao weapon bay qua center cua enemy
-            newWeapon.Fly(targetWeapon.position, newWeapon.weaponData.flySpeed);
+
+            StartCoroutine(FlyWeaponToTarget(newWeapon.gameObject, targetWeapon.position, newWeapon.weaponData.flySpeed));
+            //newWeapon.Fly(targetWeapon.position, newWeapon.weaponData.flySpeed);
             character.enemyList.Clear();
         }
         label:;

@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Indicator")]
     [SerializeField] private GameObject indicator;
+    [SerializeField] private GameObject canvasName;
 
     [Header("Coin")]
     [SerializeField] private Text coinText;
@@ -129,6 +130,16 @@ public class UIManager : MonoBehaviour
         indicator.SetActive(false);
     }
 
+    public void ShowCanvasName()
+    {
+        canvasName.SetActive(true);
+    }
+
+    public void HideBotName()
+    {
+        canvasName.SetActive(false);
+    }
+
     //weap shop
     public void ShowWeaponShop()
     {
@@ -145,10 +156,15 @@ public class UIManager : MonoBehaviour
     {
         coin.SetActive(true);
     }
-
+    
     public void HideCoin()
     {
         coin.SetActive(false);
+    }
+
+    public void UpdateUICoin()
+    {
+        coinText.text = DataManager.ins.playerData.coin.ToString();
     }
 
     //alive text
@@ -165,5 +181,14 @@ public class UIManager : MonoBehaviour
     public void SetRankText(int rank)
     {
         rankText.text = "Rank: " + rank.ToString();
+    }
+
+    //choose areas
+    public void HideAllItemChooseAreas()
+    {
+        hatArea.SetActive(false);
+        pantArea.SetActive(false);
+        shieldArea.SetActive(false);
+        fullsetArea.SetActive(false);
     }
 }

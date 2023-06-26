@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] private Material whiteMaterial;
+    public Material whiteMaterial;
     [SerializeField] private Rigidbody rb;
     public GameObject prefabWeapon;
 

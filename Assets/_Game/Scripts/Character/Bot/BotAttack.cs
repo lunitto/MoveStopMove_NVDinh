@@ -39,7 +39,8 @@ public class BotAttack : CharacterAttack
         Weapon newWeapon = weaponPool.GetObject().GetComponent<Weapon>(); // lay weapon tu` pool
         newWeapon.transform.position = rightHand.transform.position; // dat weapon vao tay phai character
         TargetWeapon(newWeapon.gameObject, enemyPos);
-        newWeapon.Fly(targetWeapon.position, newWeapon.weaponData.flySpeed);
+        StartCoroutine(FlyWeaponToTarget(newWeapon.gameObject, targetWeapon.position, newWeapon.weaponData.flySpeed));
+        //newWeapon.Fly(targetWeapon.position, newWeapon.weaponData.flySpeed);
 
         yield return null;
     }

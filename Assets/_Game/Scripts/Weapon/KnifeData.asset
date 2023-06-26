@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 47a54d95010b2f14fadc233dfc920238, type: 2}
   - {fileID: 2100000, guid: 1dae5c59937a6514497e6cbde5a23d55, type: 2}
   rotateSpeed: 0
-  flySpeed: 10
+  flySpeed: 15
   weaponCost: 0

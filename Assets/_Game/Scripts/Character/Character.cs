@@ -60,4 +60,14 @@ public class Character : MonoBehaviour
             this.onHandWeapon.SetActive(false);
         }
     }
+
+    public virtual void SetSkinnedMeshRenderer(Material mat)
+    {
+        skinnedMeshRenderer.material = mat;
+    }
+
+    public virtual void SetCurrentBodyMat(Material mat)
+    {
+        currentBodyMat = mat;
+    }
 }

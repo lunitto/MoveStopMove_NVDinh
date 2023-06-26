@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b66a8f753ee6e4fae48a1d072833f6, type: 3}
+  m_Name: AngelData
+  m_EditorClassIdentifier: 
+  head: {fileID: 6310056498431108860, guid: ef6e38d10cca8564a82e5f9eef3fcfc5, type: 3}
+  tail: {fileID: 0}
+  wing: {fileID: 6958473979829645443, guid: 5ad51b6df0569924a86cea6e5d6a840b, type: 3}
+  leftHandObject: {fileID: 2464341657999446038, guid: 466fe2c828f052047888bee6cd7ed06c, type: 3}
+  mat: {fileID: 2100000, guid: 955c9c1fdcf423d45b3c5747cef44b04, type: 2}

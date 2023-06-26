@@ -121,7 +121,9 @@ public class GameManager : MonoBehaviour
         BotManager.instance.EnableAllBots();
         UIManager.instance.ShowJoystick();
         UIManager.instance.ShowIndicators();
+        UIManager.instance.ShowCanvasName();
         UIManager.instance.ShowAliveText();
+        UIManager.instance.ShowCoin();
         currentAlive = characterList.Count;
         isGaming = true;
     }
