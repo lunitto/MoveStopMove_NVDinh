@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
             {
                 currentLevelIndex = 0;
             }
+            SoundManager.instance.Play(SoundType.Win);
         }
         
     }

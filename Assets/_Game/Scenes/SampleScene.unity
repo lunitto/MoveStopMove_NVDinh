@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10547272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -723,6 +723,172 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55916240}
   m_CullTransparentMesh: 1
+--- !u!1 &70981526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 70981527}
+  - component: {fileID: 70981529}
+  - component: {fileID: 70981528}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &70981527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70981526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4913014, y: 100, z: 0.18321532}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &70981528
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70981526}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &70981529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70981526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7228d52fa5a36844a8b361109133255f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTF: {fileID: 1304807412}
+  audioSource: {fileID: 70981528}
+  sounds:
+  - clip: {fileID: 8300000, guid: 3b6425a632d4cfc4b9eb26a34e55071c, type: 3}
+    soundType: 0
+    volume: 0.6
+    pitch: 1.2
+  - clip: {fileID: 8300000, guid: 142c98874cfa14c4a96d432788902b54, type: 3}
+    soundType: 1
+    volume: 0.5
+    pitch: 1.5
+  - clip: {fileID: 8300000, guid: 6363a9021e31a304ba1b643cb7722f3f, type: 3}
+    soundType: 2
+    volume: 0.15
+    pitch: 1.5
+  - clip: {fileID: 8300000, guid: b0ecab52e9a553142a999ebe0df5bfa6, type: 3}
+    soundType: 3
+    volume: 0.4
+    pitch: 1.5
+  - clip: {fileID: 8300000, guid: 45e189f419a53844b9f77828cf042567, type: 3}
+    soundType: 4
+    volume: 0.4
+    pitch: 1.5
+  maxDistance: 8
+  isMute: 0
 --- !u!1 &82737890
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 50
   isPurchased: 0
   lockObj: {fileID: 1592729395}
   itemType: 3
@@ -3671,10 +3837,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 773346170}
-  itemType: 0
+  itemType: 1
 --- !u!114 &391167780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4952,7 +5118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 679007258}
   itemType: 0
@@ -5070,11 +5236,11 @@ MonoBehaviour:
   player: {fileID: 1304807417}
   hats:
   - {fileID: 6625378605633107412, guid: 33ef21334efa2e6469c471fd9ebe1626, type: 3}
-  - {fileID: 765387412316862685, guid: 89fe47c6deb03f64092da7308831b3fa, type: 3}
+  - {fileID: 1991342657929743996, guid: 199d008ec0a01b841be699f7f9fc56ab, type: 3}
   - {fileID: 1883633765018757949, guid: be5bb11940b59564c90749fd54d9e018, type: 3}
   - {fileID: 2013766470547210216, guid: 76a32909b9a3fb84b891db39a99c239d, type: 3}
   - {fileID: 3300715020011000182, guid: 494bfd4e7b55d154ba52d5c73c90d370, type: 3}
-  - {fileID: 632297947711631007, guid: f1024867f7b320f4bb790cfba11c23aa, type: 3}
+  - {fileID: 6537564481967475374, guid: d4975e3a3d8ee04488d460920b911bf2, type: 3}
   - {fileID: 5358630187719113317, guid: 9288c7c25698fe54196e7f080324e3f1, type: 3}
   - {fileID: 1081860319707941403, guid: c07d2baadfec2cd43be07c001dcf07fe, type: 3}
   - {fileID: 7236954617605728945, guid: ab728e36b8415474ba9f3e03775af190, type: 3}
@@ -5182,10 +5348,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 907110284}
-  itemType: 0
+  itemType: 1
 --- !u!114 &559330188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6324,7 +6490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 10
   isPurchased: 0
   lockObj: {fileID: 692105943}
   itemType: 2
@@ -6536,7 +6702,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 200
+  m_Text: 100
 --- !u!222 &644062709
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6736,10 +6902,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 1127630537}
-  itemType: 0
+  itemType: 1
 --- !u!114 &653121985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7209,7 +7375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 602793904}
   itemType: 0
@@ -7790,7 +7956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 880276556}
   itemType: 0
@@ -8719,7 +8885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 1755296690}
   itemType: 0
@@ -9822,7 +9988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 1085862711}
   itemType: 0
@@ -10824,14 +10990,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945499902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: -0.484}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0.173}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4791942292802620466}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &953892536
 GameObject:
   m_ObjectHideFlags: 0
@@ -10962,7 +11128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 810113481}
   itemType: 1
@@ -11135,7 +11301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 823576687}
   itemType: 0
@@ -11275,7 +11441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 50
   isPurchased: 0
   lockObj: {fileID: 2041894482}
   itemType: 3
@@ -13184,10 +13350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 2068740752}
-  itemType: 0
+  itemType: 1
 --- !u!114 &1228785149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13460,7 +13626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 1447887286}
   itemType: 0
@@ -14003,7 +14169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00290eeae1058b4499a4766bce576744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   joystickBackground: {fileID: 1199097680368918068}
   joystickHandle: {fileID: 1199097680290413623}
   characterAnimation: {fileID: 1304807414}
@@ -14084,7 +14250,7 @@ MonoBehaviour:
   leftHand: {fileID: 10547273}
   leftHand2: {fileID: 2055587411}
   dinhdau: {fileID: 707331653}
-  lung: {fileID: 1824053490}
+  lung: {fileID: 1320399790}
   tail: {fileID: 945499903}
   pants: {fileID: 8694194341742204455}
   fullsetDatas:
@@ -14275,6 +14441,37 @@ MonoBehaviour:
   currentIndex: 0
   usingIndex: -1
   itemType: 2
+--- !u!1 &1320399789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1320399790}
+  m_Layer: 0
+  m_Name: lung
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1320399790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320399789}
+  m_LocalRotation: {x: 0, y: -0.13658012, z: 0, w: 0.9906291}
+  m_LocalPosition: {x: -0.515, y: 0.484, z: -0.613}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4791942292802620466}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: -15.7, z: 0}
 --- !u!1 &1321682121
 GameObject:
   m_ObjectHideFlags: 0
@@ -14329,7 +14526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 50
   isPurchased: 0
   lockObj: {fileID: 306645142}
   itemType: 3
@@ -15770,7 +15967,7 @@ MonoBehaviour:
   playerData:
     isSetUp: 1
     level: 0
-    coin: 500
+    coin: 0
     usingItemIndexs: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     dict:
     - itemType: 0
@@ -16369,7 +16566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 1866870580}
   itemType: 0
@@ -16504,10 +16701,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 1723008515}
-  itemType: 0
+  itemType: 1
 --- !u!114 &1619461880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17088,10 +17285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 189831873}
-  itemType: 0
+  itemType: 1
 --- !u!114 &1673616976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18015,10 +18212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 1899228809}
-  itemType: 0
+  itemType: 1
 --- !u!114 &1770694757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18728,7 +18925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1824053490}
   m_Layer: 0
-  m_Name: lung
+  m_Name: lung1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20892,7 +21089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 10
   isPurchased: 0
   lockObj: {fileID: 577962579}
   itemType: 2
@@ -21119,7 +21316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 30
   isPurchased: 0
   lockObj: {fileID: 491291870}
   itemType: 0
@@ -21259,10 +21456,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7339a1a95109f4499624cbf8605d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 20
   isPurchased: 0
   lockObj: {fileID: 904933170}
-  itemType: 0
+  itemType: 1
 --- !u!114 &2143721559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22850,6 +23047,7 @@ Transform:
   - {fileID: 7814502684413896019}
   - {fileID: 4803256113754179988}
   - {fileID: 945499903}
+  - {fileID: 1320399790}
   m_Father: {fileID: 8778850931534488890}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 11.415522, y: -8.216162, z: -2.7712755}

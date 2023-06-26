@@ -96,7 +96,8 @@ public class Bot : Character, INavMeshAgent
     {
         characterAnim.ChangeAnim("idle");        
         navMeshAgent.velocity = new Vector3(0, 0, 0);
-        navMeshAgent.isStopped = true;
+        if(navMeshAgent.enabled)
+            navMeshAgent.isStopped = true;
     }
     
     public void OnTriggerEnter(Collider other)

@@ -152,7 +152,7 @@ public class PlayerData
     [Header("--------- Game Params ---------")]
     public bool isSetUp = false;
     public int level = 0;
-    public int coin = 500;
+    public int coin = 400;
     public int[] usingItemIndexs = new int[10];
     public IsPurchasedItems[] dict = new IsPurchasedItems[4];
     public Material currentBodyMat;

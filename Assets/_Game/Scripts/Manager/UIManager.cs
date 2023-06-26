@@ -53,6 +53,7 @@ public class UIManager : MonoBehaviour
         HideJoystick();
         HideAliveText();
         HideIndicators();
+        UpdateUICoin();
     }
 
     private void Update()

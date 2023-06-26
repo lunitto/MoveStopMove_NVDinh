@@ -87,6 +87,11 @@ public class Weapon : MonoBehaviour
                 otherCharacter.isDead = true;
                 
                 weaponPool.ReturnToPool(this.gameObject);
+                //play sound
+                if (SoundManager.instance.IsInDistance(this.transform))
+                {
+                    SoundManager.instance.Play(SoundType.Die);
+                }
             }
             if(other.gameObject.CompareTag("bot"))
             {

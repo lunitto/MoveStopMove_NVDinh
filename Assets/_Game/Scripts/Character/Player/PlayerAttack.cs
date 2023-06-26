@@ -102,6 +102,11 @@ public class PlayerAttack : CharacterAttack
             StartCoroutine(FlyWeaponToTarget(newWeapon.gameObject, targetWeapon.position, newWeapon.weaponData.flySpeed));
             //newWeapon.Fly(targetWeapon.position, newWeapon.weaponData.flySpeed);
             character.enemyList.Clear();
+            //play sound
+            if (SoundManager.instance.IsInDistance(this.transform))
+            {
+                SoundManager.instance.Play(SoundType.Throw);
+            }
         }
         label:;
         yield return null;

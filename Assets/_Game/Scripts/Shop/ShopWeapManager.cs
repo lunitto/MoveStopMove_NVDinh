@@ -74,19 +74,22 @@ public class ShopWeapManager : MonoBehaviour
 
     public void BuyWeapon()
     {
-        if (weapons[currentWeapIndex].isPurchased == false)
+        if (weapons[currentWeapIndex].isPurchased == false && DataManager.ins.playerData.coin >= weapons[currentWeapIndex].weaponData.weaponCost)
         {
             weapons[currentWeapIndex].isPurchased = true;
-            
-            weaponCost.text = "using";
+            DataManager.ins.playerData.coin -= weapons[currentWeapIndex].weaponData.weaponCost;
+            UIManager.instance.UpdateUICoin();
+            weaponCost.text = "using"; 
             usingWeaponIndex = currentWeapIndex;
-            
+            //DataManager.ins.playerData.usingWeaponIndex = usingWeaponIndex;
+            DataManager.ins.playerData.isPurchasedWeapon[currentWeapIndex] = true;
         }
         else if (weapons[currentWeapIndex].isPurchased == true)
         {
             weaponCost.text = "using";
             usingWeaponIndex = currentWeapIndex;
-            
+            DataManager.ins.playerData.usingWeaponIndex = usingWeaponIndex;
+            DataManager.ins.playerData.isPurchasedWeapon[currentWeapIndex] = true;
         }
     }
 

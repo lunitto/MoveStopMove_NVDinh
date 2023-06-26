@@ -41,7 +41,11 @@ public class BotAttack : CharacterAttack
         TargetWeapon(newWeapon.gameObject, enemyPos);
         StartCoroutine(FlyWeaponToTarget(newWeapon.gameObject, targetWeapon.position, newWeapon.weaponData.flySpeed));
         //newWeapon.Fly(targetWeapon.position, newWeapon.weaponData.flySpeed);
-
+        //play sound
+        if (SoundManager.instance.IsInDistance(this.transform))
+        {
+            SoundManager.instance.Play(SoundType.Throw);
+        }
         yield return null;
     }
 
