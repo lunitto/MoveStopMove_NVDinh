@@ -9,7 +9,7 @@ public class AttackRange : MonoBehaviour
     {
         if (other.gameObject != this.gameObject && character.isDead == false)
         {
-            if (other.gameObject.CompareTag("bot") || other.gameObject.CompareTag("player"))
+            if (other.gameObject.CompareTag(Const.BOT) || other.gameObject.CompareTag(Const.PLAYER))
             {
                 Character otherCharacter = other.gameObject.GetComponent<Character>();
                 if (otherCharacter.isDead == false )
@@ -25,7 +25,7 @@ public class AttackRange : MonoBehaviour
     {
         if (other.gameObject != this.gameObject)
         {
-            if (other.gameObject.CompareTag("bot") || other.gameObject.CompareTag("player"))
+            if (other.gameObject.CompareTag(Const.BOT) || other.gameObject.CompareTag(Const.PLAYER))
             {
                 character.enemyList.Remove(other.gameObject.GetComponent<Character>());
             }

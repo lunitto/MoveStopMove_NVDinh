@@ -26,7 +26,7 @@ public class BotAttack : CharacterAttack
 
         Vector3 enemyPos = enemy.transform.position;
         bot.ShowOnHandWeapon();
-        characterAnimation.ChangeAnim("attack");
+        characterAnimation.ChangeAnim(Const.ANIM_ATTACK);
         RotateToTarget();
 
         yield return new WaitForSeconds(0.4f);//thời gian vung tay cho đến khi vũ khí rời bàn tay là 0.4s

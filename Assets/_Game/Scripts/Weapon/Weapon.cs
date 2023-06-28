@@ -77,7 +77,7 @@ public class Weapon : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("bot") || other.gameObject.CompareTag("player"))
+        if (other.gameObject.CompareTag(Const.BOT) || other.gameObject.CompareTag(Const.PLAYER))
         {
             //Debug.Log("aaaaaaaaaaaaaaaa");
             Character otherCharacter = other.gameObject.GetComponent<Character>();
@@ -93,11 +93,11 @@ public class Weapon : MonoBehaviour
                     SoundManager.instance.Play(SoundType.Die);
                 }
             }
-            if(other.gameObject.CompareTag("bot"))
+            if(other.gameObject.CompareTag(Const.BOT))
             {
                 (otherCharacter as Bot).ChangeState(new DieState());
             }
-            if(other.gameObject.CompareTag("player"))
+            if(other.gameObject.CompareTag(Const.PLAYER))
             {
                 string nameEnemy = this.GetComponent<Weapon>().GetCharacter().GetComponent<Bot>().botName.GetComponent<BotName>().nameString;
                 UIManager.instance.loseText.text = "KILLED BY: " + nameEnemy;
@@ -109,7 +109,7 @@ public class Weapon : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("obstacle"))
+        if (other.gameObject.CompareTag(Const.OBSTACLE))
         {
             StartCoroutine(StuckAtObstacle());
         }

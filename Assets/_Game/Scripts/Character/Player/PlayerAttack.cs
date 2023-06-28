@@ -77,7 +77,7 @@ public class PlayerAttack : CharacterAttack
         {
             Vector3 enemyPos = enemy.transform.position;
             character.ShowOnHandWeapon();// hien thi weapon tren tay
-            characterAnimation.ChangeAnim("attack");// vung tay trong 0.4s
+            characterAnimation.ChangeAnim(Const.ANIM_ATTACK);// vung tay trong 0.4s
 
             float elapsedTime = 0f;
             float duration = 0.4f;
@@ -132,7 +132,7 @@ public class PlayerAttack : CharacterAttack
         canAttack = true;
         if (character.isDead == false && GameManager.instance.isGaming == true )
         {
-            characterAnimation.ChangeAnim("idle");
+            characterAnimation.ChangeAnim(Const.ANIM_IDLE);
         }
         //character.enemyList.Clear();
         character.ShowOnHandWeapon();

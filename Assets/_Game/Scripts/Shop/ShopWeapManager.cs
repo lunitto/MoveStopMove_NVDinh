@@ -79,14 +79,14 @@ public class ShopWeapManager : MonoBehaviour
             weapons[currentWeapIndex].isPurchased = true;
             DataManager.ins.playerData.coin -= weapons[currentWeapIndex].weaponData.weaponCost;
             UIManager.instance.UpdateUICoin();
-            weaponCost.text = "using"; 
+            weaponCost.text = Const.TEXT_USING; 
             usingWeaponIndex = currentWeapIndex;
             //DataManager.ins.playerData.usingWeaponIndex = usingWeaponIndex;
             DataManager.ins.playerData.isPurchasedWeapon[currentWeapIndex] = true;
         }
         else if (weapons[currentWeapIndex].isPurchased == true)
         {
-            weaponCost.text = "using";
+            weaponCost.text = Const.TEXT_USING;
             usingWeaponIndex = currentWeapIndex;
             DataManager.ins.playerData.usingWeaponIndex = usingWeaponIndex;
             DataManager.ins.playerData.isPurchasedWeapon[currentWeapIndex] = true;
@@ -148,11 +148,11 @@ public class ShopWeapManager : MonoBehaviour
         {
             if (index == usingWeaponIndex)
             {
-                weaponCost.text = "using";
+                weaponCost.text = Const.TEXT_USING;
             }
             else
             {
-                weaponCost.text = "use";
+                weaponCost.text = Const.TEXT_USE;
             }
         }
     }

@@ -54,7 +54,7 @@ public class Bot : Character, INavMeshAgent
     public override void OnDeath()
     {
         DisableCollider();
-        characterAnim.ChangeAnim("dead");
+        characterAnim.ChangeAnim(Const.ANIM_DEAD);
         //ChangeState(new DieState());
         HideOnHandWeapon();
         indicator.enabled = false;
@@ -88,13 +88,13 @@ public class Bot : Character, INavMeshAgent
 
     public void Move()
     {
-        characterAnim.ChangeAnim("run");
+        characterAnim.ChangeAnim(Const.ANIM_RUN);
         navMeshAgent.isStopped = false;
         //isMoving = true;
     }
     public void StopMoving()
     {
-        characterAnim.ChangeAnim("idle");        
+        characterAnim.ChangeAnim(Const.ANIM_IDLE);        
         navMeshAgent.velocity = new Vector3(0, 0, 0);
         if(navMeshAgent.enabled)
             navMeshAgent.isStopped = true;
@@ -106,7 +106,7 @@ public class Bot : Character, INavMeshAgent
         {
             return;
         }
-        if (other.CompareTag("weapon") && other.GetComponent<Weapon>().GetCharacter() != this)
+        if (other.CompareTag(Const.WEAPON) && other.GetComponent<Weapon>().GetCharacter() != this)
         {
             //OnDeath();
             //ChangeState(new DieState());
@@ -114,7 +114,7 @@ public class Bot : Character, INavMeshAgent
 
         }
 
-        if (other.CompareTag("wall"))
+        if (other.CompareTag(Const.WALL))
         {
             isWall = true;
         }

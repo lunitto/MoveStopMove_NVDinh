@@ -20,7 +20,7 @@ public class Player : Character
         base.OnInit();
         StopMoving();
         GetWeaponHand();
-        characterAnim.ChangeAnim("idle");
+        characterAnim.ChangeAnim(Const.ANIM_IDLE);
         
         skinnedMeshRenderer.material = whiteMaterial;
         isMoving = false;
@@ -28,7 +28,7 @@ public class Player : Character
     public override void OnDeath()
     {
         DisableCollider();
-        characterAnim.ChangeAnim("dead");
+        characterAnim.ChangeAnim(Const.ANIM_DEAD);
         skinnedMeshRenderer.material = deathMaterial;
         UIManager.instance.SetRankText(GameManager.instance.currentAlive);
         BotManager.instance.DisableAllBots();
@@ -57,13 +57,13 @@ public class Player : Character
 
     public void Idle()
     {
-        characterAnim.ChangeAnim("idle");
+        characterAnim.ChangeAnim(Const.ANIM_IDLE);
     }
 
     public void Dance()
     {
         StopMoving();
-        characterAnim.ChangeAnim("dance");
+        characterAnim.ChangeAnim(Const.ANIM_DANCE);
     }
 
     public void GetWeaponHand()
@@ -86,7 +86,7 @@ public class Player : Character
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("weapon") && other.GetComponent<Weapon>().GetCharacter() != this) 
+        if (other.CompareTag(Const.WEAPON) && other.GetComponent<Weapon>().GetCharacter() != this) 
         {
             //OnDeath();
             //other.GetComponent<Weapon>().ReturnToPool();

@@ -54,7 +54,7 @@ public class SkinShopManager : MonoBehaviour
             item.isPurchased = true;// đánh dấu là đã mua
             DataManager.ins.playerData.coin -= item.cost;//trừ tiền của người chơi
             UIManager.instance.UpdateUICoin();//update coin hiển thị
-            ic.UpdateBuyButton("using");//button thay đổi từ số tiền sang USING
+            ic.UpdateBuyButton(Const.TEXT_USING);//button thay đổi từ số tiền sang USING
             ic.usingIndex = ic.currentIndex;//đánh dấu item này đang được sử dụng
             UnlockSkin(item);//tắt UI khóa
         }
@@ -64,13 +64,13 @@ public class SkinShopManager : MonoBehaviour
             //nếu đang không sử dụng item này thì USE -> USING
             if (ic.usingIndex != ic.currentIndex)
             {
-                ic.UpdateBuyButton("using");
+                ic.UpdateBuyButton(Const.TEXT_USING);
                 ic.usingIndex = ic.currentIndex;
             }
             //nếu đang sử dụng item này thì USING -> USE
             else
             {
-                ic.UpdateBuyButton("use");
+                ic.UpdateBuyButton(Const.TEXT_USE);
                 ic.usingIndex = -1;
             }
             UnlockSkin(item);

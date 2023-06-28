@@ -58,12 +58,12 @@ public abstract class ItemController : MonoBehaviour
             // nếu item đang được chọn mua rồi và item đang được chọn chính là item đang sử dụng thì button sẽ hiển thị USING
             if (usingIndex == index)
             {
-                UpdateBuyButton("using");
+                UpdateBuyButton(Const.TEXT_USING);
             }
             // nếu item đang được chọn mua rồi và item đang được chọn không phải item đang sử dụng thì button sẽ hiển thị USE
             else
             {
-                UpdateBuyButton("use");
+                UpdateBuyButton(Const.TEXT_USE);
             }
         }
         currentIndex = index;
