@@ -16,4 +16,4 @@ MonoBehaviour:
   tail: {fileID: 0}
   wing: {fileID: 0}
   leftHandObject: {fileID: 3186862864559758105, guid: 4164ca4215a98a24ca08f2046176c6e9, type: 3}
-  mat: {fileID: 2100000, guid: 5d294a23d64f78741b30fe787f53da87, type: 2}
+  mat: {fileID: 0}

@@ -8,6 +8,7 @@ public class HomeBtn : BaseBtn
     {
         UIManager.instance.CloseAll();
         UIManager.instance.ShowMainMenu();
+        //GameManager.instance.RePlayer();
         GameManager.instance.SpawnMap(GameManager.instance.currentLevelIndex);
         GameManager.instance.SpawnNav(GameManager.instance.currentLevelIndex);
     }

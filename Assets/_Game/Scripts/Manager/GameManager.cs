@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayGame()
     {
+        RePlayer();
         BotManager.instance.EnableAllBots();
         UIManager.instance.ShowJoystick();
         UIManager.instance.ShowIndicators();

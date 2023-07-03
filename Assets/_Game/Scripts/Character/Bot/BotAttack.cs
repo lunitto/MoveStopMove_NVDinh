@@ -29,7 +29,7 @@ public class BotAttack : CharacterAttack
         characterAnimation.ChangeAnim(Const.ANIM_ATTACK);
         RotateToTarget();
 
-        yield return new WaitForSeconds(0.4f);//thời gian vung tay cho đến khi vũ khí rời bàn tay là 0.4s
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.4f));//thời gian vung tay cho đến khi vũ khí rời bàn tay là random 0.1=> 0.4s
 
         if (character.isDead)
         {

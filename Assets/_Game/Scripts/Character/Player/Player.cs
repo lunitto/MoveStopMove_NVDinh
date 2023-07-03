@@ -21,8 +21,9 @@ public class Player : Character
         StopMoving();
         GetWeaponHand();
         characterAnim.ChangeAnim(Const.ANIM_IDLE);
-        
+
         skinnedMeshRenderer.material = whiteMaterial;
+       
         isMoving = false;
     }
     public override void OnDeath()
