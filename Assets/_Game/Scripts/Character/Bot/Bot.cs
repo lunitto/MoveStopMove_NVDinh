@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Bot : Character, INavMeshAgent
+public class Bot : Character
 {
     [SerializeField] private Material whiteMaterial;
     [SerializeField] private Rigidbody rb;
@@ -26,7 +26,7 @@ public class Bot : Character, INavMeshAgent
     // Start is called before the first frame update
     void Start()
     {
-        //OnInit();
+        OnInit();
     }
 
     // Update is called once per frame
@@ -54,6 +54,7 @@ public class Bot : Character, INavMeshAgent
     public override void OnDeath()
     {
         DisableCollider();
+        StopMoving();
         characterAnim.ChangeAnim(Const.ANIM_DEAD);
         //ChangeState(new DieState());
         HideOnHandWeapon();

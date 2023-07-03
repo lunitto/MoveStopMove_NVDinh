@@ -53,6 +53,7 @@ public class Player : Character
     public void StopMoving()
     {
         rb.velocity = Vector3.zero;
+        isMoving = false;
     }
 
     public void Idle()

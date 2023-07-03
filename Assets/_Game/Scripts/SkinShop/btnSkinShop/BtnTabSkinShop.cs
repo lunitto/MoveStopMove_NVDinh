@@ -20,7 +20,7 @@ public class BtnTabSkinShop :BaseBtn
         UIManager.instance.HideAllItemChooseAreas();
         ShowArea();
         ShowBuyButton();
-        player.DestroyAllItemsOnBody();
+        //player.DestroyAllItemsOnBody();
         PutItemOnPlayerBody();
         HideBackground();
         itemController.OnButtonClick(itemController.currentIndex);

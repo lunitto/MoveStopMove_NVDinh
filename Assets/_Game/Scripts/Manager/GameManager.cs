@@ -72,40 +72,12 @@ public class GameManager : MonoBehaviour
     }
 
     
-
-    public void DeleteCharacters()
+    public void RePlayer()
     {
-        if (!player.isDead)
-        {
-            characterList.Remove(player);
-        }
-        while (characterList.Count > 0)
-        {
-            // tat het cac weapon dang bay
-            for (int j = 0; j < characterList[0].pooledWeaponList.Count; j++)
-            {
-                if (characterList[0].pooledWeaponList[j].gameObject.activeSelf)
-                {
-                    characterList[0].pooledWeaponList[j].gameObject.SetActive(false);
-                }
-            }
-            // despawn bot
-            BotManager.instance.DeSpawn(characterList[0] as Bot);
-        }
-        characterList.Clear();
-    }
-
-    public void RespawnCharacters()
-    {
-        characterList.Add(player);
+        //characterList.Add(player);
+        player.isDead = false;
         player.OnInit();
-        for (int i = 0; i < BotManager.instance.botList.Count; i++)
-        {
-            //characterList.Add(BotManager.instance.botList[i]);
-            BotManager.instance.SpawnBot();
-        }
     }
-
     public void DeleteThisElementInEnemyLists(Character character)
     {
         for (int i = 0; i < characterList.Count; i++)
@@ -125,7 +97,7 @@ public class GameManager : MonoBehaviour
         UIManager.instance.ShowCanvasName();
         UIManager.instance.ShowAliveText();
         UIManager.instance.ShowCoin();
-        currentAlive = characterList.Count;
+        currentAlive = initialAlive + 1;
         isGaming = true;
     }
 
@@ -157,31 +129,15 @@ public class GameManager : MonoBehaviour
         NavMesh.AddNavMeshData(navMeshDatas[index]);
         currentNavMeshData = navMeshDatas[index];
     }
-    public void EnableALlCharacters()
-    {
-        for (int i = 0; i < BotManager.instance.botList.Count; i++)
-        {
-            BotManager.instance.botList[i].ChangeState(new PatrolState());
-        }
-        isGaming = true;
-    }
+    
 
-    public void DisnableALlCharacters()
-    {
-        for (int i = 0; i < BotManager.instance.botList.Count; i++)
-        {
-            BotManager.instance.botList[i].ChangeState(new IdleState());
-        }
-        isGaming = false;
-    }
-
-    public void Replay()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //public void Replay()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
-    }
-    public void Next()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    //}
+    //public void Next()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    //}
 }

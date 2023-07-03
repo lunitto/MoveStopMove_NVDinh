@@ -17,4 +17,6 @@ public class Const
     public const string OBSTACLE = "obstacle";
     public const string TEXT_USING = "using";
     public const string TEXT_USE = "use";
+    public const string TEXT_KILL = "KILLED BY: ";
+    public const string TEXT_RANK = "Rank: ";
 }

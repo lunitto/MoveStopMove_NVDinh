@@ -13,9 +13,9 @@ public class DieState : IState
     {
         elasedTime = 0f;
         duration = 2f;
-        bot.StopMoving();
+        //bot.StopMoving();
         
-        bot.OnDeath();
+        //bot.OnDeath();
         GameManager.instance.currentAlive--;
         tempAlive = GameManager.instance.currentAlive;
     }
@@ -31,8 +31,10 @@ public class DieState : IState
             BotManager.instance.DeSpawn(bot);
             if (tempAlive > BotManager.instance.size)
             {
+                //Debug.Log("aaaa");
                 BotManager.instance.SpawnBot();
             }
+            //BotManager.instance.SpawnBot();
         }
     }
 

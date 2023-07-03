@@ -6,7 +6,10 @@ public class ReplayBtn : BaseBtn
 {
     protected override void OnClick()
     {
-        GameManager.instance.Replay();
-        
+        UIManager.instance.HideLosePanel();
+        GameManager.instance.RePlayer();
+        GameManager.instance.SpawnMap(GameManager.instance.currentLevelIndex);
+        GameManager.instance.SpawnNav(GameManager.instance.currentLevelIndex);
+        GameManager.instance.PlayGame();
     }
 }

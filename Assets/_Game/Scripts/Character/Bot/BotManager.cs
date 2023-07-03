@@ -35,7 +35,7 @@ public class BotManager : MonoBehaviour
         Bot BotClone = botPool.GetObject().GetComponent<Bot>();
         SetPosAndRotBot(BotClone);
         BotClone.transform.SetParent(poolBot);
-        BotClone.transform.SetParent(poolBot);
+        
         BotClone.OnInit();
         SpawnBotName(BotClone);
         SpawnBotIndicator(BotClone);
@@ -48,13 +48,12 @@ public class BotManager : MonoBehaviour
         {
             GameManager.instance.characterList.Add(BotClone);
         }
-        //spawn weapon
         
     }
 
     public void DeSpawn (Bot bot)
-    {
-        bot.DeActiveNavmeshAgent();
+    {       
+        bot.DeActiveNavmeshAgent();      
         BotNamePool.instance.ReturnToPool(bot.botName);
         GameManager.instance.characterList.Remove(bot);
         botPool.ReturnToPool(bot.gameObject);

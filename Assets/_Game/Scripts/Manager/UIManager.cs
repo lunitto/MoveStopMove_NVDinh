@@ -181,7 +181,7 @@ public class UIManager : MonoBehaviour
 
     public void SetRankText(int rank)
     {
-        rankText.text = "Rank: " + rank.ToString();
+        rankText.text = Const.TEXT_RANK + rank.ToString();
     }
 
     //choose areas
