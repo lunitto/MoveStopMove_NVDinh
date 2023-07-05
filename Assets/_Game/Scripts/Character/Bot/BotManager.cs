@@ -126,6 +126,9 @@ public class BotManager : MonoBehaviour
             {
                 botList[i].ChangeState(new PatrolState());
             }
+            //botList[i].isDead = false;
+            //botList[i].OnInit();
+            //botList[i].ChangeState(new PatrolState());
         }
         GameManager.instance.isGaming = true;
     }

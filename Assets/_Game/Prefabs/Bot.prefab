@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e06f68af006234a8be0a672ea4a3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponClones: {fileID: 0}
+  weaponClones: {fileID: 5696566901345385036}
   prefabWeapon: {fileID: 2270312123352418151, guid: 03f912e5c2502eb42b8c56536df3ed9b, type: 3}
   poolSize: 5
   character: {fileID: 5696566901441610862}

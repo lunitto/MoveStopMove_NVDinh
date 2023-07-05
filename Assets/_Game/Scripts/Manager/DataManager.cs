@@ -106,7 +106,7 @@ public class DataManager : MonoBehaviour
 
     public void LoadMute()
     {
-        //AudioManager.instance.isMute = this.playerData.isMute;
+        SoundManager.instance.isMute = this.playerData.isMute;
     }
 
     public void LoadWeaponMaterialIndex()

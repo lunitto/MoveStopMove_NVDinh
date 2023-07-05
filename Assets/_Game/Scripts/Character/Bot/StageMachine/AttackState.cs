@@ -11,6 +11,7 @@ public class AttackState : IState
         elapsedTime = 0f;
         duration = 1.1f;
         bot.StopMoving();
+        bot.StartCoroutine(bot.botAttack.DelayAttack(Random.Range(0.5f, 1f)));
         bot.StartCoroutine(bot.botAttack.Attack());
     }
     public void OnExecute(Bot bot)

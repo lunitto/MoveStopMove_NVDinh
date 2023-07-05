@@ -87,6 +87,13 @@ public class GameManager : MonoBehaviour
                 characterList[i].enemyList.Remove(character);
             }
         }
+        for (int j = 0; j < character.pooledWeaponList.Count; j++)
+        {
+            if (character.pooledWeaponList[j].gameObject.activeSelf)
+            {
+                character.pooledWeaponList[j].gameObject.SetActive(false);
+            }
+        }
     }
 
     public void PlayGame()
@@ -131,6 +138,29 @@ public class GameManager : MonoBehaviour
         currentNavMeshData = navMeshDatas[index];
     }
     
+    public void DeleteAllCharacter()
+    {
+        if (!player.isDead)
+        {
+            characterList.Remove(player);
+        }
+        for (int i = 0; i < BotManager.instance.botList.Count; i++)
+        {
+            //characterList.Add(BotManager.instance.botList[i]);
+            BotManager.instance.DeSpawn(BotManager.instance.botList[i]);
+        }
+        characterList.Clear();
+    }
+
+    public void ReSpawnCharacter()
+    {
+        RePlayer();
+        characterList.Add(player);
+        for (int i = 0; i < BotManager.instance.botList.Count; i++)
+        {
+            BotManager.instance.SpawnBot();
+        }
+    }
 
     //public void Replay()
     //{

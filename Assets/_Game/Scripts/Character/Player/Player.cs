@@ -12,6 +12,14 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
+        if (DataManager.ins.playerData.currentBodyMat != null)
+        {
+            currentBodyMat = DataManager.ins.playerData.currentBodyMat;
+        }
+        else
+        {
+            currentBodyMat = whiteMaterial;
+        }
         OnInit();
     }
 
@@ -22,8 +30,9 @@ public class Player : Character
         GetWeaponHand();
         characterAnim.ChangeAnim(Const.ANIM_IDLE);
 
-        skinnedMeshRenderer.material = whiteMaterial;
-       
+        SetSkinnedMeshRenderer(currentBodyMat);
+        DataManager.ins.playerData.currentBodyMat = currentBodyMat;
+
         isMoving = false;
     }
     public override void OnDeath()
@@ -34,8 +43,18 @@ public class Player : Character
         UIManager.instance.SetRankText(GameManager.instance.currentAlive);
         BotManager.instance.DisableAllBots();
         UIManager.instance.HideJoystick();
-        UIManager.instance.ShowLosePanel();
+        UIManager.instance.ShowRevivePanel();
         isDead = true;
+    }
+
+    public void Revive()
+    {
+        EnableCollider();
+        isDead = false;
+        StopMoving();
+        characterAnim.ChangeAnim(Const.ANIM_IDLE);
+        SetSkinnedMeshRenderer(currentBodyMat);
+        DataManager.ins.playerData.currentBodyMat = currentBodyMat;
     }
     public override void EnableCollider()
     {

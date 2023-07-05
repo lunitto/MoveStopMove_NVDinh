@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject shieldArea;
     [SerializeField] private GameObject fullsetArea;
 
+    [Header("Revive:")]
+    [SerializeField] private GameObject revivePanel;
+
     //singleton
     public static UIManager instance;
 
@@ -166,6 +169,17 @@ public class UIManager : MonoBehaviour
     public void UpdateUICoin()
     {
         coinText.text = DataManager.ins.playerData.coin.ToString();
+    }
+
+    // revive
+    public void ShowRevivePanel()
+    {
+        revivePanel.SetActive(true);
+    }
+
+    public void HideRevivePanel()
+    {
+        revivePanel.SetActive(false);
     }
 
     //alive text

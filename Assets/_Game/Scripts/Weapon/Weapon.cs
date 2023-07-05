@@ -111,7 +111,8 @@ public class Weapon : MonoBehaviour
 
         if (other.gameObject.CompareTag(Const.OBSTACLE))
         {
-            StartCoroutine(StuckAtObstacle());
+            //StartCoroutine(StuckAtObstacle());
+            ReturnToPool();
         }
     }
 }
